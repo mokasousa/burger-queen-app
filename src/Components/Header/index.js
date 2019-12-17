@@ -5,7 +5,7 @@ const Header = () => {
     
     return (
         <header id="main-header">
-            <img src={require("../../Images/Burger-Queen-Logo.png")}/>
+            <img src={require("../../Images/Burger-Queen-Logo.png")} alt="Burger Queen Logo"/>
             <BrowserRouter>
                 <nav>
                     <ul>
