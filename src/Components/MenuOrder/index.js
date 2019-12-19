@@ -6,16 +6,22 @@ const MenuOrder = (props) => {
     const [menuType, setMenuType] = useState('');
 
     function switchButton(item) {
-        // let count = 1;
-        // if (props.order.includes(item)) {
-        //     console.log(item.count)
-        // } else {
-        //     props.setOrder([...props.order, {count: count, item: item}])
-        // }
-        (props.order.includes(item))
-        ? props.setOrder(props.order)
-        : props.setOrder([...props.order, item])
-        // console.log(props.order)
+
+        //console.log(props.order.includes(item.name))
+  
+        if(props.order.find(e => e.name === item.name) !== undefined){
+            const updateOrder = props.order.map(el => {
+                if(el.name === item.name){
+                    return {...el, count: el.count + 1}
+                } else {
+                    return el
+                }
+            })
+            props.setOrder(updateOrder)
+        } else {
+            props.setOrder([...props.order, {...item, count:1}])
+        }
+
     }
 
     return (
