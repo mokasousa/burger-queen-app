@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '../Button';
 
 const MenuOrder = (props) => {
@@ -9,20 +9,14 @@ const MenuOrder = (props) => {
 
         //console.log(props.order.includes(item.name))
   
-        if(props.order.find(e => e.name === item.name) !== undefined){
-            const updateOrder = props.order.map(el => {
-                if(el.name === item.name){
-                    return {...el, count: el.count + 1}
-                } else {
-                    return el
-                }
-            })
-            props.setOrder(updateOrder)
-        } else {
+        if(props.order.find(e => e.name === item.name) === undefined){
             props.setOrder([...props.order, {...item, count:1}])
-        }
-
+        } 
     }
+
+    useEffect(() => {
+        props.setTotal(props.order.reduce((acc, obj) => acc + (obj.count*obj.price), 0))
+    },[props])
 
     return (
         <>

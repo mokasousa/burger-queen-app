@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import firebase from '../config/firebase.js'
+import firebase from '../../config/firebase.js';
 
-const OrderForm = () => {
+const OrderForm = (props) => {
     const [name, setName] = useState('');
     const [table, setTable] = useState('');
 
@@ -9,22 +9,22 @@ const OrderForm = () => {
         e.preventDefault();
         firebase
             .firestore()
-            .colection('Orders')
+            .collection('Orders')
             .add({
                 name: name,
-                order: '',
+                order: props.order,
                 table: +table,
-                timeInitial: timestamps
+                total: props.total
             })
             .then(() =>{
                 setName('')
                 setTable('')
-                //setOrderList('Total: R$')
+                props.setTotal(0)
+                props.setOrder([])
             })
     }
 
     return (
-        // setOrderList(e.currentTarget.value)
         <form onSubmit={onSubmit}>
             <label>Nome</label>
             <input type='text' value={name} onChange={ e => setName(e.currentTarget.value)}></input>
