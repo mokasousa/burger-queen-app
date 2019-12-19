@@ -7,13 +7,12 @@ import OrderHistory from '../Pages/OrderHistory';
 const Routes = () => {
     return (
         <BrowserRouter>
-                <Switch>
-                    <Route exact path = '/'><Menu /></Route>
-                    <Route path='/menu'><Menu /></Route>
-                    <Route path='/preparos'><Prep /></Route>
-                    <Route path='/lista-de-pedidos'><OrderHistory /></Route>
-                </Switch>
-
+            <Switch>
+                <Route exact path = '/' component={Menu} />
+                <Route path='/menu' component={Menu} />
+                <Route path='/preparos' component={Prep} />
+                <Route path='/lista-de-pedidos' component={OrderHistory} />
+            </Switch>
         </BrowserRouter>
     )
 }
