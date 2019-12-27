@@ -17,14 +17,21 @@ const OrderList = (props) => {
         props.setOrder(updateOrder.filter(elem => elem.count !== 0))
     }
 
-    useEffect(() => {
-        props.setTotal(props.order.reduce((acc, obj) => acc + (obj.count*obj.price), 0))
-    },[props])
+    useEffect(() => props.setTotal(props.order.reduce((acc, obj) => acc + (obj.count*obj.price), 0)),[props])
 
     return (
         <div className='order-list'>
             <ul>
-                {props.order.map((el, index) => <li key={index} id={index}>{el.name} <Button class='btn-add' onClick={() => updateItemQuantity(el, -1)} title='-' />{el.count}<Button class='btn-remove' onClick={() => updateItemQuantity(el, 1)} title='+' /> R$ {el.count*el.price} <Button class='btn-delete' onClick={() => deleteItem(el)} title='X' /></li>)}
+                {props.order.map((el, index) =>              
+                    <li key={index} id={index}>
+                        {el.name} 
+                        <Button class='btn-remove' onClick={() => updateItemQuantity(el, -1)} title='-' />
+                        {el.count}
+                        <Button class='btn-add' onClick={() => updateItemQuantity(el, 1)} title='+' />
+                        R$ {el.count*el.price} 
+                        <Button class='btn-delete' onClick={() => deleteItem(el)} title='X' />
+                    </li>
+                )}
                 <li>Total: R$ {props.total}</li>
             </ul>
         </div>

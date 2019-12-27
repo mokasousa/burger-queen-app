@@ -1,8 +1,15 @@
-header#main-header {
-    height: 60px;
-    background: #ffffff;
-    font-size: 18px;
-    font-weight: bold;
-    color: black;
-    display: flex;
+.ui.top.attached.tabular.menu {
+    margin-bottom: 2em;
+    color: #4EC475;
+}
+
+.ui.image {
+    margin: 1.5em;
+    min-width: 100px;
+}
+
+
+.nav.item {
+    margin-left: 1.5em;
+    margin-right: 1.5em;
 }
