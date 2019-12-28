@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import firebase from '../../config/firebase.js'
-//import Button from '../../Components/Button'
 import OrderList from '../../Components/OrderList'
 import MenuOrder from '../../Components/MenuOrder'
 import MenuForm from '../../Components/MenuForm'

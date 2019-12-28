@@ -5,13 +5,14 @@ import Checkbox from '../Checkbox';
 const MenuOrder = (props) => {
 
     const [menuType, setMenuType] = useState('');
-    const [checkbox, setCheckbox] = useState(false);
+    const [checkedItems, setCheckedItems] = useState([]);
 
-    function switchButton(item) {
+    function addItem(item) {
 
         if(item.name === 'Hamburguer simples'){
-            setCheckbox(true);
-            console.log(item.option, item.extra);
+            console.log(checkedItems.map(i => i.extra))
+            console.log({...item, option: checkedItems.option, extra: checkedItems.map(i => i.extra)})
+            setCheckedItems([])
         } else if(props.order.find(e => e.name === item.name) === undefined){
             props.setOrder([...props.order, {...item, count:1}])
         } 
@@ -30,12 +31,12 @@ const MenuOrder = (props) => {
                     {props.menu.map((item, index) =>
                         (menuType === 'Café da Manhã' && item.breakfast === true)
                         ? (<li key={index}>
-                                <Button class='btn-menu-items' onClick={() => switchButton(item)} title={item.name + ' R$' + item.price} />
+                                <Button class='btn-menu-items' onClick={() => addItem(item)} title={item.name + ' R$' + item.price} />
                             </li>)
                         : (menuType === 'Almoço/Jantar' && item.breakfast === false)
                         ? (<li key={index}>
-                                <Button class='btn-menu-items' onClick={() => switchButton(item)} title={item.name + ' R$' + item.price} />
-                                {checkbox && item.name === 'Hamburguer simples' ? <Checkbox item={item} /> : ''}
+                                {item.name === 'Hamburguer simples' ? <Checkbox item={item} checkedItems={checkedItems} setCheckedItems={setCheckedItems} /> : ''}
+                                <Button class='btn-menu-items' onClick={() => addItem(item)} title={item.name + ' R$' + item.price} />
                             </li>)
                         : ''
                     )}

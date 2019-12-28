@@ -1,38 +1,35 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const Checkbox = (props) => {
-    const [checkedItems, setCheckedItems] = useState({}); 
   
-    const handleChange = (event) => {
-        setCheckedItems({...checkedItems, [event.target.name] : event.target.checked });
-        console.log("checkedItems: ", checkedItems);
-    }
-  
-    // const checkboxes = [
-    //     {
-    //         name: 'check-box-1',
-    //         key: 'checkBox1',
-    //         label: 'Check Box 1',
-    //     },
-    //     {
-    //         name: 'check-box-2',
-    //         key: 'checkBox2',
-    //         label: 'Check Box 2',
-    //     }
-    // ];
-  
+    const handleChangeOption = (event) => {
+        console.log(event.target.checked)
+        if(event.target.checked){
+            props.setCheckedItems([...props.checkedItems, {option:event.target.name}]);
+        } else {
+            props.setCheckedItems(props.checkedItems.filter(elem => elem.option !== event.target.name))
+        }
+    }  
+
+    const handleChangeExtra = (event) => {
+        console.log(event.target.checked)
+        if(event.target.checked){
+            props.setCheckedItems([...props.checkedItems, {extra:event.target.name}]);
+        } else {
+            props.setCheckedItems(props.checkedItems.filter(elem => elem.extra !== event.target.name))
+        }
+    }  
   
     return (
         <>
             <form>
-                <h3>Tipo:</h3>
+                <h3>Escolha o tipo:</h3>
                 {props.item.option.map((i, index) => (
                     <label key={index}>
                         <input 
-                        type='checkbox' 
-                        name={i} 
-                        checked={checkedItems[i]} 
-                        onChange={handleChange} 
+                        type='radio'
+                        name={i}
+                        onChange={handleChangeOption} 
                         /> 
                         {i}
                     </label>
@@ -43,8 +40,7 @@ const Checkbox = (props) => {
                         <input 
                         type='checkbox' 
                         name={i} 
-                        checked={checkedItems[i]} 
-                        onChange={handleChange} 
+                        onChange={handleChangeExtra} 
                         /> 
                         {i}
                     </label>
