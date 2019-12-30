@@ -1,22 +1,24 @@
 import React from 'react';
 
 const Checkbox = (props) => {
+
+
   
     const handleChangeOption = (event) => {
-        console.log(event.target.checked)
         if(event.target.checked){
-            props.setCheckedItems([...props.checkedItems, {option:event.target.name}]);
+            props.setCheckedItems({...props.checkedItems, option:event.target.value});
         } else {
-            props.setCheckedItems(props.checkedItems.filter(elem => elem.option !== event.target.name))
+            props.setCheckedItems(props.checkedItems.filter(elem => elem.option !== event.target.value))
         }
     }  
 
     const handleChangeExtra = (event) => {
         console.log(event.target.checked)
+        console.log(event.target.name)
         if(event.target.checked){
-            props.setCheckedItems([...props.checkedItems, {extra:event.target.name}]);
+            props.setCheckedItems({...props.checkedItems, extra:[...props.checkedItems.extra, event.target.value]});
         } else {
-            props.setCheckedItems(props.checkedItems.filter(elem => elem.extra !== event.target.name))
+            props.setCheckedItems({...props.checkedItems, extra: props.checkedItems.extra.filter(elem => elem !== event.target.value)})
         }
     }  
   
@@ -28,7 +30,9 @@ const Checkbox = (props) => {
                     <label key={index}>
                         <input 
                         type='radio'
-                        name={i}
+                        name='option'
+                        value={i}
+                        checked={props.checkedItems.option === i}
                         onChange={handleChangeOption} 
                         /> 
                         {i}
@@ -39,7 +43,9 @@ const Checkbox = (props) => {
                     <label key={index}>
                         <input 
                         type='checkbox' 
-                        name={i} 
+                        name='extra'
+                        value={i}
+                        checked={props.checkedItems.extra.includes(i)}
                         onChange={handleChangeExtra} 
                         /> 
                         {i}

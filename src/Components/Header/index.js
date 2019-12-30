@@ -17,7 +17,7 @@ const Header = () => {
 
     const menuStyle = {
         margin: '2em',
-        color: '#4EC475'
+        color: '#4EC475 !important'
     }
 
     return (

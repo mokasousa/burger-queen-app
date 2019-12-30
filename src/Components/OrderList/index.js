@@ -22,9 +22,11 @@ const OrderList = (props) => {
     return (
         <div className='order-list'>
             <ul>
-                {props.order.map((el, index) =>              
+                {props.order.map((el, index) =>
                     <li key={index} id={index}>
-                        {el.name} 
+                        {(el.option.length !== 0) 
+                        ? el.name +' ' + el.option +' ' + el.extra.join(' ')
+                        : el.name}
                         <Button class='btn-remove' onClick={() => updateItemQuantity(el, -1)} title='-' />
                         {el.count}
                         <Button class='btn-add' onClick={() => updateItemQuantity(el, 1)} title='+' />
