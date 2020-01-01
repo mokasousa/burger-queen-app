@@ -6,22 +6,28 @@ const OrderForm = (props) => {
     const [table, setTable] = useState('');
 
     function onSubmit(e) {
+        console.log('name: ' + name + ', table: ' + table)
         e.preventDefault();
-        firebase
-            .firestore()
-            .collection('Orders')
-            .add({
-                name: name,
-                order: props.order,
-                table: +table,
-                total: props.total
-            })
-            .then(() =>{
-                setName('')
-                setTable('')
-                props.setTotal(0)
-                props.setOrder([])
-            })
+        if(name.length > 0 && +table > 0) {
+           return firebase
+                .firestore()
+                .collection('Orders')
+                .add({
+                    name: name,
+                    order: props.order,
+                    table: +table,
+                    total: props.total,
+                    timeOrder: firebase.firestore.Timestamp.fromDate(new Date())
+                })
+                .then(() =>{
+                    setName('')
+                    setTable('')
+                    props.setTotal(0)
+                    props.setOrder([])
+                })
+        } else {
+           return alert('Insira o nome e a mesa do cliente!')
+        }
     }
 
     return (

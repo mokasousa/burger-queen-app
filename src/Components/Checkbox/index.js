@@ -2,23 +2,20 @@ import React from 'react';
 
 const Checkbox = (props) => {
 
+    const handleChange = (event) => {
 
-  
-    const handleChangeOption = (event) => {
         if(event.target.checked){
-            props.setCheckedItems({...props.checkedItems, option:event.target.value});
+            return (event.target.name === 'extra')
+                        ? props.setCheckedItems({...props.checkedItems, extra:[...props.checkedItems.extra, event.target.value]})
+                        : (event.target.name === 'option')
+                        ? props.setCheckedItems({...props.checkedItems, option:event.target.value})
+                        : false
         } else {
-            props.setCheckedItems(props.checkedItems.filter(elem => elem.option !== event.target.value))
-        }
-    }  
-
-    const handleChangeExtra = (event) => {
-        console.log(event.target.checked)
-        console.log(event.target.name)
-        if(event.target.checked){
-            props.setCheckedItems({...props.checkedItems, extra:[...props.checkedItems.extra, event.target.value]});
-        } else {
-            props.setCheckedItems({...props.checkedItems, extra: props.checkedItems.extra.filter(elem => elem !== event.target.value)})
+            return (event.target.name === 'extra')
+                        ? props.setCheckedItems({...props.checkedItems, extra: props.checkedItems.extra.filter(elem => elem !== event.target.value)})
+                        : (event.target.name === 'option')
+                        ? props.setCheckedItems(props.checkedItems.filter(elem => elem.option !== event.target.value))
+                        : false
         }
     }  
   
@@ -33,7 +30,7 @@ const Checkbox = (props) => {
                         name='option'
                         value={i}
                         checked={props.checkedItems.option === i}
-                        onChange={handleChangeOption} 
+                        onChange={handleChange} 
                         /> 
                         {i}
                     </label>
@@ -46,7 +43,7 @@ const Checkbox = (props) => {
                         name='extra'
                         value={i}
                         checked={props.checkedItems.extra.includes(i)}
-                        onChange={handleChangeExtra} 
+                        onChange={handleChange} 
                         /> 
                         {i}
                     </label>

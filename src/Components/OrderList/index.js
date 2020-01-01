@@ -5,12 +5,12 @@ import Button from '../Button';
 const OrderList = (props) => {
 
     function deleteItem(item) {
-        props.setOrder(props.order.filter(i => i !== item))
+        props.setOrder(props.order.filter(el => el !== item))
     }
 
     function updateItemQuantity(item, quantity) {
         const updateOrder = props.order.map(el => {
-            return (el.name === item.name)
+            return (el.name === item.name && el.option === item.option && el.extra === item.extra)
             ? {...el, count: el.count + quantity}
             : el
         });
