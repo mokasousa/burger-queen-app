@@ -1,15 +1,20 @@
-.ui.top.attached.tabular.menu {
-    margin-bottom: 2em;
-    color: #4EC475;
+.ui.tabular.menu {
+    margin: 2em 0;
+    border-bottom: 2px solid #545353 !important;
 }
 
 .ui.image {
-    margin: 1.5em;
-    min-width: 100px;
+    margin: 1em;
 }
 
-
-.nav.item {
-    margin-left: 1.5em;
-    margin-right: 1.5em;
+.item.nav {
+    margin-right: 2em;
+    font-size: medium;
+}
+.active {
+    color: #4EC475 !important;
+    margin-bottom: -2px !important;
+    border-top: 2px solid #545353 !important;
+    border-left: 2px solid #545353 !important;
+    border-right: 2px solid #545353 !important;
 }

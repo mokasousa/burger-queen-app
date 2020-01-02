@@ -6,9 +6,10 @@ const OrderForm = (props) => {
     const [table, setTable] = useState('');
 
     function onSubmit(e) {
-        console.log('name: ' + name + ', table: ' + table)
         e.preventDefault();
-        if(name.length > 0 && +table > 0) {
+
+        if(name.length > 0 && +table > 0 && props.total > 0) {
+
            return firebase
                 .firestore()
                 .collection('Orders')
@@ -17,7 +18,7 @@ const OrderForm = (props) => {
                     order: props.order,
                     table: +table,
                     total: props.total,
-                    timeOrder: firebase.firestore.Timestamp.fromDate(new Date())
+                    timeOrder: new Date()//firebase.firestore.Timestamp.fromDate(new Date())
                 })
                 .then(() =>{
                     setName('')
@@ -25,8 +26,10 @@ const OrderForm = (props) => {
                     props.setTotal(0)
                     props.setOrder([])
                 })
+
         } else {
-           return alert('Insira o nome e a mesa do cliente!')
+
+           return alert('Insira o nome, a mesa e o pedido do cliente!')
         }
     }
 

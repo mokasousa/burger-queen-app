@@ -1,5 +1,6 @@
 import React, { useEffect} from 'react';
 import Button from '../Button';
+import './styles.css'
 
 
 const OrderList = (props) => {
@@ -23,7 +24,7 @@ const OrderList = (props) => {
         <div className='order-list'>
             <ul>
                 {props.order.map((el, index) =>
-                    <li key={index} id={index}>
+                    <li key={index} id={'list-' + index} >
                         {(el.option.length !== 0) 
                         ? el.name +' ' + el.option +' ' + el.extra.join(' ')
                         : el.name}
@@ -41,3 +42,5 @@ const OrderList = (props) => {
 }
 
 export default OrderList;
+
+// style={{transition: props.color + '3s linear'}}

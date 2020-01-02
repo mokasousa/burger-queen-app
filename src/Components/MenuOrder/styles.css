@@ -1,0 +1,18 @@
+.ui.basic.button {
+    border: 2px solid #545353 !important;
+    font-weight: bold !important;
+    padding: 1em 2em;
+    margin: 0;
+    font-size: medium;
+}
+
+.type-menu {
+    margin: 1.5em;
+}
+
+.btn-menu {
+    margin-right: -4px !important;
+    width: min-content;
+    word-break: keep-all;
+    background-color: transparent;
+}

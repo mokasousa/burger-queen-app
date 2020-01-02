@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Link } from 'react-router-dom';
 import { Image, Menu } from 'semantic-ui-react';
-//import './styles.css'
+import './styles.css'
 
 const Header = () => {
 
     const pathname = window.location.pathname;
 
-    const path = pathname === '/' 
+    const path = pathname === '/'
     ? 'Menu'
     : pathname.substr(1);
 
@@ -15,20 +15,14 @@ const Header = () => {
 
     const handleItemClick = (e, {name}) => setActiveItem(name);
 
-    const menuStyle = {
-        margin: '2em',
-        color: '#4EC475 !important'
-    }
-
     return (
             
-            <Menu attached='top' tabular style={menuStyle}>
+            <Menu position='top' tabular>
 
                 <Image 
                 src={require('../../Images/Burger-Queen-Logo.png')} 
                 alt='Burger Queen Logo' 
-                size='small' 
-                style={{margin: 10}}
+                size='small'
                 />
 
                 <BrowserRouter>
@@ -39,7 +33,7 @@ const Header = () => {
                         active={activeItem === 'Menu'}
                         onClick={handleItemClick}
                         as={Link}
-                        to='/menu'
+                        to='/Menu'
                         />
 
                         <Menu.Item
@@ -48,7 +42,7 @@ const Header = () => {
                         active={activeItem === 'Preparos'}
                         onClick={handleItemClick}
                         as={Link}
-                        to='/preparos'
+                        to='/Preparos'
                         />
 
                         <Menu.Item
@@ -57,7 +51,7 @@ const Header = () => {
                         active={activeItem === 'Pedidos'}
                         onClick={handleItemClick}
                         as={Link}
-                        to='/lista-de-pedidos'
+                        to='/Pedidos'
                         />
                     </Menu.Menu>
                 </BrowserRouter>

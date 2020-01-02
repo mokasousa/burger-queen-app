@@ -22,31 +22,35 @@ const Checkbox = (props) => {
     return (
         <>
             <form>
-                <h3>Escolha o tipo:</h3>
+                <p>ESCOLHA O TIPO:</p>
                 {props.item.option.map((i, index) => (
-                    <label key={index}>
-                        <input 
-                        type='radio'
-                        name='option'
-                        value={i}
-                        checked={props.checkedItems.option === i}
-                        onChange={handleChange} 
-                        /> 
-                        {i}
-                    </label>
+                    <>
+                    <input 
+                    style={{margin: '1em'}}
+                    key={index}
+                    type='radio'
+                    name='option'
+                    value={i}
+                    checked={props.checkedItems.option === i}
+                    onChange={handleChange} 
+                    /> 
+                    <label>{i}</label>
+                    </>
                 ))}
-                <h3>Extras?</h3>
+                <p>EXTRAS?</p>
                 {props.item.extra.map((i, index) => (
-                    <label key={index}>
-                        <input 
-                        type='checkbox' 
-                        name='extra'
-                        value={i}
-                        checked={props.checkedItems.extra.includes(i)}
-                        onChange={handleChange} 
-                        /> 
-                        {i}
-                    </label>
+                    <>
+                    <input 
+                    style={{margin: '1em'}}
+                    key={index}
+                    type='checkbox' 
+                    name='extra'
+                    value={i}
+                    checked={props.checkedItems.extra.includes(i)}
+                    onChange={handleChange}
+                    /> 
+                    <label>{i}</label>
+                    </>
                 ))}
             </form>
         </>
