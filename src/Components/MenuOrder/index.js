@@ -56,23 +56,38 @@ const MenuOrder = (props) => {
 
     return (
         <>
-            <div className='type-menu'>
-                <Button class='btn-menu ui basic button' onClick={(e) => handleClick(e, 'Café-da-Manhã')} title='Café-da-Manhã' />
-                <Button class='btn-menu ui basic button' onClick={(e) => handleClick(e, 'Almoço/Jantar')} title='Almoço/Jantar' />
+            <div className='type-menu ui buttons'>
+                <Button 
+                class='btn-menu ui toggle button' 
+                onClick={(e) => handleClick(e, 'Café-da-Manhã')} 
+                title='Café-da-Manhã'
+                />
+                <Button 
+                class='btn-menu ui toggle button' 
+                onClick={(e) => handleClick(e, 'Almoço/Jantar')} 
+                title='Almoço/Jantar'
+                />
             </div>   
             <div className='order-menu'>
                 <ul>
                     {props.menu.map((item, index) =>
                         (menuType === 'Café-da-Manhã' && item.breakfast === true)
                         ? (<li key={index}>
-                                <Button class='btn-menu-items ui basic button' onClick={() => addItem(item)} title={item.name + ' R$' + item.price} />
+                                <Button 
+                                class='btn-menu-items ui basic button' 
+                                onClick={() => addItem(item)} 
+                                title={item.name + ' R$' + item.price} 
+                                />
                             </li>)
                         : (menuType === 'Almoço/Jantar' && item.breakfast === false)
                         ? (<li key={index}>
                                 {(item.option.length !== 0) 
                                     ? <Checkbox item={item} checkedItems={checkedItems} setCheckedItems={setCheckedItems} /> 
                                     : ''}
-                                <Button class='btn-menu-items ui basic button' onClick={() => addItem(item)} title={item.name + ' R$' + item.price} />
+                                <Button 
+                                class='btn-menu-items ui attached basic button' 
+                                onClick={() => addItem(item)} 
+                                title={item.name + ' R$' + item.price} />
                             </li>)
                         : ''
                     )}

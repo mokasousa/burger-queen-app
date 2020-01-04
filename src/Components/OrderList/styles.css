@@ -1,4 +1,39 @@
 @keyframes color{
- 0% {background-color: #4EC475}
- 70% {background-color: transparent}
+    0% {background-color: #4EC475}
+    100% {background-color: transparent}
+}
+
+.order-list {
+    display: inline-block;
+    margin: 1em 2.3em;
+    padding: 1em;
+    font-weight: bold;
+    text-align: right;
+    min-width: 350px;
+    width: 100%;
+    border-radius: 2px;
+}
+
+ul {
+    list-style: none;
+}
+
+.order-list li{
+    margin: 0.8em;
+    border-radius: 2px;
+}
+
+.icon {
+    width: 2em;
+    margin: 0.5em !important;
+    color: #545353;
+}
+
+.btn {
+    background: transparent;
+    border:none;
+}
+
+.total {
+    background-color: rgb(192, 171, 149, 0.3);
 }

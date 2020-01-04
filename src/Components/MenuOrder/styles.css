@@ -1,18 +1,35 @@
-.ui.basic.button {
-    border: 2px solid #545353 !important;
-    font-weight: bold !important;
-    padding: 1em 2em;
-    margin: 0;
+button.ui.basic.button {
+    border: 2px solid #545353;
+    font-weight: bold;
+    width: 285px;
+    margin: 0.3em 0.7em;
     font-size: medium;
+}
+
+button.ui.basic.button:active {
+    transform: translateY(2px);
 }
 
 .type-menu {
     margin: 1.5em;
 }
 
-.btn-menu {
-    margin-right: -4px !important;
-    width: min-content;
-    word-break: keep-all;
+.order-menu ul{
+    margin: 1.5em;
+    display: flexbox;
+    list-style-type: none;
+}
+
+button.ui.toggle.button {
     background-color: transparent;
+    border: 2px solid #545353;
+    font-weight: bold;
+    font-size: medium;
+}
+button.ui.toggle.button:hover {
+    background-color: #4EC475;
+}
+
+button.ui.toggle.button:focus{
+    background-color: #4EC475;
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import './styles.css'
 
 const Checkbox = (props) => {
 
@@ -21,6 +22,7 @@ const Checkbox = (props) => {
   
     return (
         <>
+            <div class='ui attached compact message'>
             <form>
                 <p>ESCOLHA O TIPO:</p>
                 {props.item.option.map((i, index) => (
@@ -53,6 +55,7 @@ const Checkbox = (props) => {
                     </>
                 ))}
             </form>
+            </div>
         </>
     );
 }

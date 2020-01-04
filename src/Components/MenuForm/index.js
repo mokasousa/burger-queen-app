@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import firebase from '../../config/firebase.js';
+import Button from '../Button';
+import './styles.css'
 
 const OrderForm = (props) => {
     const [name, setName] = useState('');
@@ -34,12 +36,29 @@ const OrderForm = (props) => {
     }
 
     return (
-        <form onSubmit={onSubmit}>
-            <label>Nome</label>
-            <input type='text' value={name} onChange={ e => setName(e.currentTarget.value)}></input>
-            <label>Mesa</label>
-            <input type='text' value={table} onChange={ e => setTable(e.currentTarget.value)}></input>
-            <button>Enviar</button>
+        <form class='ui form' onSubmit={onSubmit}>
+            <div class="field">
+                <label>Cliente:</label>
+                <input 
+                type='text' 
+                value={name}
+                placeholder='Nome' 
+                onChange={ e => setName(e.currentTarget.value)}>
+                </input>
+            </div>
+            <div class="field">
+                <label>Mesa:</label>
+                <input 
+                type='text' 
+                value={table} 
+                placeholder='Mesa' 
+                onChange={ e => setTable(e.currentTarget.value)}>
+                </input>
+            </div>
+            <Button 
+            class='ui button'
+            title='Enviar'
+            />
         </form>
     )
 } 

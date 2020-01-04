@@ -28,14 +28,25 @@ const OrderList = (props) => {
                         {(el.option.length !== 0) 
                         ? el.name +' ' + el.option +' ' + el.extra.join(' ')
                         : el.name}
-                        <Button class='btn-remove' onClick={() => updateItemQuantity(el, -1)} title='-' />
+                        <Button 
+                        class='btn remove' 
+                        onClick={() => updateItemQuantity(el, -1)} 
+                        icon='minus circle icon'
+                        />
                         {el.count}
-                        <Button class='btn-add' onClick={() => updateItemQuantity(el, 1)} title='+' />
+                        <Button 
+                        class='btn add' 
+                        onClick={() => updateItemQuantity(el, 1)} 
+                        icon='plus circle icon'
+                        />
                         R$ {el.count*el.price} 
-                        <Button class='btn-delete' onClick={() => deleteItem(el)} title='X' />
+                        <Button 
+                        class='btn delete' 
+                        onClick={() => deleteItem(el)} icon='trash icon'
+                        />
                     </li>
                 )}
-                <li>Total: R$ {props.total}</li>
+                <li className='total'>Total: R$ {props.total} </li>
             </ul>
         </div>
     )

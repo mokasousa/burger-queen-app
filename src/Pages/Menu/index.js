@@ -3,6 +3,7 @@ import firebase from '../../config/firebase.js'
 import OrderList from '../../Components/OrderList'
 import MenuOrder from '../../Components/MenuOrder'
 import MenuForm from '../../Components/MenuForm'
+import './styles.css'
 
 const Menu = () => {
     const [menu, setMenu] = useState([]);
@@ -22,10 +23,12 @@ const Menu = () => {
     }, [])
  
     return(
-        <>     
+        <>   
             <MenuOrder menu={menu} order={order} setOrder={setOrder} setTotal={setTotal}/>
+            <div className='client-order'>
             <OrderList order={order} setOrder={setOrder} total={total} setTotal={setTotal}/>
             <MenuForm order={order} setOrder={setOrder} total={total} setTotal={setTotal} />
+            </div>
         </>
     )
 }

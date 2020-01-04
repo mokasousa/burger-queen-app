@@ -5,14 +5,15 @@
 
 .ui.image {
     margin: 1em;
+    min-width: 120px !important;
 }
 
 .item.nav {
     margin-right: 2em;
     font-size: medium;
 }
-.active {
-    color: #4EC475 !important;
+.item.nav.active {
+    font-weight: bolder;
     margin-bottom: -2px !important;
     border-top: 2px solid #545353 !important;
     border-left: 2px solid #545353 !important;
