@@ -22,13 +22,15 @@ const Checkbox = (props) => {
   
     return (
         <>
-            <div class='ui attached compact message'>
+            <div class='ui floating message'>
             <form>
-                <p>ESCOLHA O TIPO:</p>
+                <div class='header'>Tipo de Hamburguer?</div>
+                <div class="grouped fields">
                 {props.item.option.map((i, index) => (
                     <>
+                    <div class="field">
                     <input 
-                    style={{margin: '1em'}}
+                    style={{margin: '1em 0.5em'}}
                     key={index}
                     type='radio'
                     name='option'
@@ -37,13 +39,15 @@ const Checkbox = (props) => {
                     onChange={handleChange} 
                     /> 
                     <label>{i}</label>
+                    </div>
                     </>
                 ))}
-                <p>EXTRAS?</p>
+                </div>
+                <div class='header'>Extras no Hamburguer?</div>
                 {props.item.extra.map((i, index) => (
                     <>
                     <input 
-                    style={{margin: '1em'}}
+                    style={{margin: '1em 0.5em'}}
                     key={index}
                     type='checkbox' 
                     name='extra'

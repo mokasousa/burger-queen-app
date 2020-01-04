@@ -13,7 +13,7 @@
     font-size: medium;
 }
 .item.nav.active {
-    font-weight: bolder;
+    color: #4EC475 !important;
     margin-bottom: -2px !important;
     border-top: 2px solid #545353 !important;
     border-left: 2px solid #545353 !important;

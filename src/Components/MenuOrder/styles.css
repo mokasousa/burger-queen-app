@@ -1,8 +1,9 @@
-button.ui.basic.button {
+button.btn-menu-items.ui.basic.button{
     border: 2px solid #545353;
+    border-radius: 2px;
     font-weight: bold;
     width: 285px;
-    margin: 0.3em 0.7em;
+    margin: 0em 0.7em 0.4em 0.7em;
     font-size: medium;
 }
 
@@ -10,26 +11,27 @@ button.ui.basic.button:active {
     transform: translateY(2px);
 }
 
-.type-menu {
-    margin: 1.5em;
+div.ui.buttons {
+    margin: 2.3em 0!important;
 }
 
 .order-menu ul{
     margin: 1.5em;
-    display: flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    align-items: initial;
     list-style-type: none;
+    /* max-height: 300px; */
 }
 
-button.ui.toggle.button {
+div.ui.buttons .ui.button {
     background-color: transparent;
     border: 2px solid #545353;
     font-weight: bold;
     font-size: medium;
 }
-button.ui.toggle.button:hover {
-    background-color: #4EC475;
-}
 
-button.ui.toggle.button:focus{
-    background-color: #4EC475;
+div.ui.buttons .ui.button.active {
+    color: #4EC475;
 }

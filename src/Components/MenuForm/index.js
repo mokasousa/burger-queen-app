@@ -51,7 +51,7 @@ const OrderForm = (props) => {
                 <input 
                 type='text' 
                 value={table} 
-                placeholder='Mesa' 
+                placeholder='Número' 
                 onChange={ e => setTable(e.currentTarget.value)}>
                 </input>
             </div>

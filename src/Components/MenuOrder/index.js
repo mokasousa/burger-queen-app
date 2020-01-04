@@ -5,12 +5,8 @@ import './styles.css'
 
 const MenuOrder = (props) => {
 
-    const [menuType, setMenuType] = useState('');
+    const [menuType, setMenuType] = useState('Café-da-Manhã');
     const [checkedItems, setCheckedItems] = useState({extra:[]});
-
-    const handleClick = (e, menutype) => {
-        setMenuType(menutype)
-    }
 
     const addItem = (item) => {
 
@@ -58,13 +54,13 @@ const MenuOrder = (props) => {
         <>
             <div className='type-menu ui buttons'>
                 <Button 
-                class='btn-menu ui toggle button' 
-                onClick={(e) => handleClick(e, 'Café-da-Manhã')} 
+                class={menuType === 'Café-da-Manhã' ? 'btn-menu ui button active' : 'btn-menu ui button'}
+                onClick={() => setMenuType('Café-da-Manhã')} 
                 title='Café-da-Manhã'
                 />
                 <Button 
-                class='btn-menu ui toggle button' 
-                onClick={(e) => handleClick(e, 'Almoço/Jantar')} 
+                class={menuType === 'Almoço/Jantar' ? 'btn-menu ui button active' : 'btn-menu ui button'}
+                onClick={() => setMenuType('Almoço/Jantar')} 
                 title='Almoço/Jantar'
                 />
             </div>   
@@ -87,7 +83,9 @@ const MenuOrder = (props) => {
                                 <Button 
                                 class='btn-menu-items ui attached basic button' 
                                 onClick={() => addItem(item)} 
-                                title={item.name + ' R$' + item.price} />
+                                title={item.name + ' R$' + item.price} 
+                                />
+                                
                             </li>)
                         : ''
                     )}
