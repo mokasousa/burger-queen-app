@@ -5,13 +5,13 @@
 
 .order-list {
     display: inline-block;
-    margin: 1em 2.3em;
-    padding: 1em;
+    padding: 1em 0.5em;
     font-weight: bold;
     text-align: right;
     min-width: 350px;
     width: 100%;
     border-radius: 2px;
+    flex-grow: 2;
 }
 
 ul {

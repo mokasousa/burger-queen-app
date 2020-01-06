@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+//import { Popup } from 'semantic-ui-react';
 import Button from '../Button';
 import Checkbox from '../Checkbox';
 import './styles.css'
@@ -34,8 +35,7 @@ const MenuOrder = (props) => {
 
                 setCheckedItems({extra:[]})
 
-                return alert('Escolha o tipo de Hamburguer!')
-                
+                return alert('Escolha o tipo de Hamburguer!')                
             }
 
         } else {
@@ -85,7 +85,6 @@ const MenuOrder = (props) => {
                                 onClick={() => addItem(item)} 
                                 title={item.name + ' R$' + item.price} 
                                 />
-                                
                             </li>)
                         : ''
                     )}

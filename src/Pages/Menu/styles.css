@@ -2,5 +2,9 @@
     margin: 1.5em;
     background-color: rgba(192, 171, 149, 0.3);
     display: flex;
+    justify-content: center;
+    flex-basis: 0;
     position: absolute;
+    border-radius: 2px;
+    width: 95%;
 }

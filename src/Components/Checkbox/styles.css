@@ -1,10 +1,11 @@
 div.ui.floating.message{
     position: relative;
-    margin-left: 0.8em;
+    margin: 0 0 0.3em 0.8em;
     border-style: none;
-    background-color: rgb(192, 171, 149, 0.3);
+    background-color: transparent;
+    width: 285px;
 }
-
+/* 
 .ui.message:after{
     content: '';
     position: absolute;
@@ -18,8 +19,8 @@ div.ui.floating.message{
     margin-left: -13px;
     margin-bottom: -13px;
 
-}
+} */
 
-input[type=checkbox]:hover{
+/* input[type=checkbox]:hover{
     color: #4EC475 !important;
-}
+} */

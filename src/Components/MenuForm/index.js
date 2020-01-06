@@ -20,7 +20,8 @@ const OrderForm = (props) => {
                     order: props.order,
                     table: +table,
                     total: props.total,
-                    timeOrder: new Date()//firebase.firestore.Timestamp.fromDate(new Date())
+                    timeOrder: firebase.firestore.FieldValue.serverTimestamp(),
+                    status: 'pedido pendente'
                 })
                 .then(() =>{
                     setName('')

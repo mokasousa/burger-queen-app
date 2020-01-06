@@ -18,7 +18,7 @@ const Menu = () => {
             .then((response) => {
                 const itensMenu = [];
                 response.forEach(item => itensMenu.push(item.data()))
-                setMenu(itensMenu);
+                setMenu(itensMenu.sort((a,b) => a.name > b.name));
             })
     }, [])
  
