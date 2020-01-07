@@ -1,3 +1,6 @@
+.menu{
+    justify-content: center;
+}
 .client-order {
     margin: 1.5em;
     background-color: rgba(192, 171, 149, 0.3);
@@ -6,5 +9,8 @@
     flex-basis: 0;
     position: absolute;
     border-radius: 2px;
+    /* min-width: 720px; */
     width: 95%;
 }
+
+/* //@media max-width: 600px; */

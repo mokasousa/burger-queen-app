@@ -1,7 +1,6 @@
 .ui.form {
     font-size: medium !important;
     padding: 1em 0.5em;
-    width: 100%;
     flex-grow: 1;
 }
 
