@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Image, Menu } from 'semantic-ui-react';
 import './styles.css';
 
@@ -24,7 +24,6 @@ const Header = () => {
                 size='small'
                 />
 
-            <BrowserRouter>
                 <Menu.Menu position='right'>
                     <Menu.Item
                     className='nav'
@@ -53,7 +52,6 @@ const Header = () => {
                     to='/Pedidos'
                     />
                 </Menu.Menu>
-            </BrowserRouter>
         </Menu>
         </>
     )

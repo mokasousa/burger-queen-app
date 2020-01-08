@@ -7,7 +7,7 @@
     display: flex;
     justify-content: center;
     flex-basis: 0;
-    position: absolute;
+    position: fixed;
     border-radius: 2px;
     /* min-width: 720px; */
     width: 95%;

@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import firebase from '../../config/firebase.js';
 import { Grid } from 'semantic-ui-react';
 import Button from '../Button';
 
 const PrepOrders = (props) => {
+    const [timeNow, setTimeNow] = useState(0);
+
+    useEffect(() => {
+        setInterval(() => setTimeNow(new Date()), 1000)
+    }, [])
 
     const updateStatus = (item) => {
         const itemUpdate = props.ordersToPrep.map(el => {
@@ -27,7 +32,7 @@ const PrepOrders = (props) => {
     }
 
     const timeElapsed = (timeOrder) => {
-        const timediff = new Date() - timeOrder;
+        const timediff = timeNow - timeOrder;
         const sec = Math.floor(timediff/1000);
         const min = Math.floor(sec/60);
         const hour = Math.floor(min/60);
@@ -48,7 +53,7 @@ const PrepOrders = (props) => {
                         <div className='order-info'>
                             <p>{item.status}</p>
                              <p>{item.timeOfOrder.toDate().toLocaleString('pt-BR').substr(11, 19)}</p>
-                             {/* <p>{setInterval(() => timeElapsed(item.timeOfOrder.toDate()), 1000)}</p>  */}
+                             <p>{timeElapsed(item.timeOfOrder.toDate())}</p> 
                              <p>Cliente: {item.name}, Mesa: {item.table}</p>
                             <p>Pedido:</p>
                             <div className='selection-order'>

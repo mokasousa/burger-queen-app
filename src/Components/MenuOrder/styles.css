@@ -16,10 +16,24 @@ button.ui.basic.button:active {
     margin: 2.3em 0!important;
 } */
 
+.ui.icon.button{
+    border:none;
+    background-color:transparent;
+}
+
+.ui.icon.button:hover{
+   background-color: transparent;
+}
+
+.checkbox-item {
+    float: bottom;
+}
+
 .order-menu ul{
     margin: 1.5em;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    /* flex-direction: column; */
     align-content: flex-start;
     align-items: center;
     list-style-type: none;
