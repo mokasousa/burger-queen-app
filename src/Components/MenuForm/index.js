@@ -17,11 +17,11 @@ const OrderForm = (props) => {
                 .collection('Orders')
                 .add({
                     name: name,
-                    order: props.order,
                     table: +table,
                     total: props.total,
-                    timeOrder: new Date(),//firebase.firestore.FieldValue.serverTimestamp(),
-                    status: 'pedido pendente'
+                    order: props.order,
+                    timeOfOrder:firebase.firestore.FieldValue.serverTimestamp(),
+                    status: 'Pedido Pendente'
                 })
                 .then(() =>{
                     setName('')

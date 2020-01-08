@@ -10,20 +10,19 @@ const Prep = () => {
         firebase
             .firestore()
             .collection('Orders')
-            .get()
-            .then((response) => {
+            .where('status', '==', 'Pedido Pendente')
+            // .orderBy('timeOfOrder', 'desc')
+            .onSnapshot((snapshot) => {
                 let itensOrders = [];
-                response.forEach(item => itensOrders.push(item.data()))
+                snapshot.docs.forEach(item => {
+                    itensOrders.push({...item.data(), id:item.id})})
                 setOrdersToPrep(itensOrders);
             })
     }, [])
 
-    console.log(ordersToPrep);
-
-
     return(
         <>
-            <PrepOrders ordersToPrep={ordersToPrep} />
+            <PrepOrders ordersToPrep={ordersToPrep} setOrdersToPrep={setOrdersToPrep}/>
         </>
     )
 }

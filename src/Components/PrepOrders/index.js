@@ -1,12 +1,29 @@
 import React from 'react';
+import firebase from '../../config/firebase.js';
 import { Grid } from 'semantic-ui-react';
 import Button from '../Button';
 
 const PrepOrders = (props) => {
-    //console.log(new Date().getTime())
 
     const updateStatus = (item) => {
-        console.log(item);
+        const itemUpdate = props.ordersToPrep.map(el => {
+            return (el.id === item.id) 
+            ? {...item, status:'Em Preparo...'}
+            : item
+        })
+        props.setOrdersToPrep(itemUpdate);
+    }
+
+    const updateOrder = (item) => {
+        console.log(item)
+        firebase
+            .firestore()
+            .collection('Orders')
+            .doc(item.id)
+            .update({
+                status:'Pronto',
+                timeOrderReady: firebase.firestore.FieldValue.serverTimestamp()
+            })
     }
 
     const timeElapsed = (timeOrder) => {
@@ -17,7 +34,6 @@ const PrepOrders = (props) => {
         const time = hour%60+'h:'+min%60+'m:'+sec%60+'s'
         return time;
     }
-
     //props.ordersToPrep.forEach(e => console.log(timeElapsed(e.timeOrder.toDate())));
     
     return (
@@ -30,8 +46,9 @@ const PrepOrders = (props) => {
                     <Grid.Row key={index}>
                     <li key={index}>
                         <div className='order-info'>
-                             <p>{item.timeOrder.toDate().toLocaleString('pt-BR').substr(11, 19)}</p>
-                             {/* <p>{setInterval(() => timeElapsed(item.timeOrder.toDate()), 1000)}</p>  */}
+                            <p>{item.status}</p>
+                             <p>{item.timeOfOrder.toDate().toLocaleString('pt-BR').substr(11, 19)}</p>
+                             {/* <p>{setInterval(() => timeElapsed(item.timeOfOrder.toDate()), 1000)}</p>  */}
                              <p>Cliente: {item.name}, Mesa: {item.table}</p>
                             <p>Pedido:</p>
                             <div className='selection-order'>
@@ -42,12 +59,12 @@ const PrepOrders = (props) => {
                         </div>
                         <Button 
                             class='btn-prepare ui basic button' 
-                            onClick={() => (console.log(''))} 
+                            onClick={() => updateStatus(item)} 
                             title= 'Em preparo'
                         />
                         <Button 
                             class='btn-ready ui basic button' 
-                            onClick={() => (console.log(''))} 
+                            onClick={() => updateOrder(item)} 
                             title= 'Pronto'
                         />
                     </li>
