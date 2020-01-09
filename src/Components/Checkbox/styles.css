@@ -1,26 +1,4 @@
-div.ui.floating.message{
-    position: relative;
-    margin: 0 0 0.3em 0.8em;
-    border-style: none;
-    background-color: transparent;
-    width: 285px;
+.radio-and-checkbox {
+    display: flex;
+    flex-direction: row;
 }
-/* 
-.ui.message:after{
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 8%;
-    width: 0;
-    height: 0;
-    border: 13px solid transparent;
-    border-top-color: rgb(192, 171, 149, 0.3);
-    border-bottom: 0;
-    margin-left: -13px;
-    margin-bottom: -13px;
-
-} */
-
-/* input[type=checkbox]:hover{
-    color: #4EC475 !important;
-} */

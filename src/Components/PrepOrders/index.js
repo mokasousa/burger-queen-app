@@ -10,17 +10,24 @@ const PrepOrders = (props) => {
         setInterval(() => setTimeNow(new Date()), 1000)
     }, [])
 
+    // useEffect(() => {
+    //     return (props.ordersToPrep.length > 0) 
+    //     ? setInterval(() => setTimeNow(new Date()), 1000)
+    //     : false
+    // }, [])
+
     const updateStatus = (item) => {
-        const itemUpdate = props.ordersToPrep.map(el => {
-            return (el.id === item.id) 
-            ? {...item, status:'Em Preparo...'}
-            : item
-        })
-        props.setOrdersToPrep(itemUpdate);
+         firebase
+            .firestore()
+            .collection('Orders')
+            .doc(item.id)
+            .update({
+                status:'Pronto',
+                timeOrderReady: firebase.firestore.FieldValue.serverTimestamp()
+            })
     }
 
     const updateOrder = (item) => {
-        console.log(item)
         firebase
             .firestore()
             .collection('Orders')
@@ -53,7 +60,7 @@ const PrepOrders = (props) => {
                         <div className='order-info'>
                             <p>{item.status}</p>
                              <p>{item.timeOfOrder.toDate().toLocaleString('pt-BR').substr(11, 19)}</p>
-                             <p>{timeElapsed(item.timeOfOrder.toDate())}</p> 
+                             <p>{timeNow !== 0 ? timeElapsed(item.timeOfOrder.toDate()) : ''}</p> 
                              <p>Cliente: {item.name}, Mesa: {item.table}</p>
                             <p>Pedido:</p>
                             <div className='selection-order'>

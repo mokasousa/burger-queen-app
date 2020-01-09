@@ -12,6 +12,10 @@ button.ui.basic.button:active {
     transform: translateY(2px);
 }
 
+.ui.segment.radio-seg {
+    margin: 0;
+}
+
 /* div.ui.buttons {
     margin: 2.3em 0!important;
 } */
@@ -26,8 +30,21 @@ button.ui.basic.button:active {
 }
 
 .checkbox-item {
-    float: bottom;
+    background-color: rgb(78, 196, 117, 0.1)  !important;
+    width: 100%;
+    max-width: 700px;
+    display: flex;
+    /* flex-direction: row; */ 
+    align-items: center;
+    order: 99;
 }
+/* .checkbox-item li {
+    
+} */
+
+/* Icon.checkbox-item.icon {
+   position:relative;
+} */
 
 .order-menu ul{
     margin: 1.5em;
@@ -37,7 +54,7 @@ button.ui.basic.button:active {
     align-content: flex-start;
     align-items: center;
     list-style-type: none;
-    justify-content: center;
+    justify-content: space-evenly;
     /* max-height: 300px; */
 }
 
