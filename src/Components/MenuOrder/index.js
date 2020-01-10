@@ -102,7 +102,7 @@ const MenuOrder = (props) => {
                             : (menuType === 'Almoço/Jantar' && item.breakfast === false)
                             ? (<li key={index}>
                                 <Button 
-                                class='btn-menu-items ui attached basic button' 
+                                class='btn-menu-items ui basic button' 
                                 onClick={() => addItem(item)} 
                                 title={item.name + ' R$' + item.price} 
                                 />
@@ -117,7 +117,7 @@ const MenuOrder = (props) => {
                             />
                             
                             <Icon 
-                            name='big check circle outline icon' 
+                            name='huge check circle outline' 
                             onClick={() => confirmOptions(item)}
                             />
                         {/* </li> */}

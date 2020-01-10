@@ -1,5 +1,6 @@
 import React, { useEffect} from 'react';
-import Button from '../Button';
+import { Icon } from 'semantic-ui-react';
+//import Button from '../Button';
 import './styles.css'
 
 
@@ -25,25 +26,30 @@ const OrderList = (props) => {
             <ul>
                 {props.order.map((el, index) =>
                     <li key={index} id={'list-' + index} >
+                        <div>
                         {(el.option.length !== 0) 
                         ? el.name +' ' + el.option +' ' + el.extra.join(' ')
                         : el.name}
-                        <Button 
-                        class='btn remove' 
-                        onClick={() => updateItemQuantity(el, -1)} 
-                        icon='minus circle icon'
+                        </div>
+                        <div>
+                        <Icon 
+                        size='large'
+                        name='minus square outline' 
+                        onClick={() => updateItemQuantity(el, -1)}
                         />
                         {el.count}
-                        <Button 
-                        class='btn add' 
-                        onClick={() => updateItemQuantity(el, 1)} 
-                        icon='plus circle icon'
+                        <Icon 
+                        size='large'
+                        name='plus square outline' 
+                        onClick={() => updateItemQuantity(el, 1)}
                         />
                         R$ {el.count*el.price} 
-                        <Button 
-                        class='btn delete' 
-                        onClick={() => deleteItem(el)} icon='trash icon'
+                        <Icon 
+                        size='large'
+                        name='trash alternate outline' 
+                        onClick={() => deleteItem(el)}
                         />
+                        </div>
                     </li>
                 )}
                 <li className='total'>Total: R$ {props.total} </li>

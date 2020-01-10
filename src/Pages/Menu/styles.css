@@ -1,21 +1,20 @@
 .menu{
-    /* display:flex; */
+    /* display:flex;
+    flex-wrap: wrap; */
     justify-content: center;
-    position: relative;
+    /* position: relative; */
 }
 .client-order {
     margin: 1.5em;
     background-color: rgba(192, 171, 149, 0.3);
+    /* flex-basis: 50%; */
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    /* flex-basis: 0;
-    align-self: flex-end; */
-    position: fixed;
+    /* position: sticky; */
     width:100%;
     border-radius: 2px;
-    /* min-width: 720px; */
     max-width: 700px;
-    /* position: absolute;*/
     bottom: 0; 
 
 }

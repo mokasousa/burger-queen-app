@@ -8,7 +8,7 @@ button.btn-menu-items.ui.basic.button{
     flex: 1;
 }
 
-button.ui.basic.button:active {
+button.btn-menu-items.ui.basic.button:active {
     transform: translateY(2px);
 }
 
@@ -16,56 +16,45 @@ button.ui.basic.button:active {
     margin: 0;
 }
 
-/* div.ui.buttons {
-    margin: 2.3em 0!important;
+i.huge.check.circle.outline.icon{
+    color: #4EC475;
+    margin:0.2em !important;
+}
+
+/* i.huge.check.circle.outline.icon:hover{
+    color: #4EC475; 
 } */
 
-.ui.icon.button{
-    border:none;
-    background-color:transparent;
-}
-
-.ui.icon.button:hover{
-   background-color: transparent;
-}
-
-.checkbox-item {
-    background-color: rgb(78, 196, 117, 0.1)  !important;
+div.ui.segment.checkbox-item {
+    border: 2px solid #545353;
     width: 100%;
     max-width: 700px;
     display: flex;
-    /* flex-direction: row; */ 
     align-items: center;
     order: 99;
+    margin-bottom:0;
 }
-/* .checkbox-item li {
-    
-} */
-
-/* Icon.checkbox-item.icon {
-   position:relative;
-} */
 
 .order-menu ul{
     margin: 1.5em;
+    max-width: 700px;
     display: flex;
     flex-wrap: wrap;
-    /* flex-direction: column; */
     align-content: flex-start;
     align-items: center;
     list-style-type: none;
     justify-content: space-evenly;
-    /* max-height: 300px; */
 }
 
-div.ui.buttons .ui.button {
+
+div.type-menu.ui.buttons .ui.button {
     background-color:  rgb(192, 171, 149, 0.3);
     border: 2px solid #545353;
     font-weight: bold;
     font-size: medium;
 }
 
-div.ui.buttons .ui.button.active {
+div.type-menu.ui.buttons .ui.button.active {
     color: #4EC475;
     background-color: transparent;
 }

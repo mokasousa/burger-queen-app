@@ -26,10 +26,10 @@ const Menu = () => {
         <>   
             <div className='menu'>
             <MenuOrder menu={menu} order={order} setOrder={setOrder} setTotal={setTotal}/>
-            <footer className='client-order'>
+            <div className='client-order'>
             <OrderList order={order} setOrder={setOrder} total={total} setTotal={setTotal}/>
             <MenuForm order={order} setOrder={setOrder} total={total} setTotal={setTotal} />
-            </footer>
+            </div>
             </div>
         </>
     )

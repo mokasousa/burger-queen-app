@@ -4,34 +4,34 @@
 }
 
 .order-list {
-    display: block;
+    /* display: block; */
     padding: 1em 0.5em;
     font-weight: bold;
     text-align: right;
     min-width: 350px;
-    max-width: 500px;
+    max-width: 470px;
     border-radius: 2px;
     flex-grow: 10;
 }
 
 ul {
     list-style: none;
+    min-width: 350px;
+    max-width: 500px;
 }
 
 .order-list li{
-    margin: 0.8em;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: right;
+    margin: 1.2em 0;
     border-radius: 2px;
+    
 }
 
-.icon {
-    width: 2em;
-    margin: 0.5em !important;
+i.outline.large.icon {
+    margin: 0 0.5em;
     color: #545353;
-}
-
-.btn {
-    background: transparent;
-    border:none;
 }
 
 .total {

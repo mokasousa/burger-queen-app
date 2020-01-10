@@ -1,5 +1,5 @@
 import React from 'react';
-import { Segment, Header } from 'semantic-ui-react';
+import { Segment, Divider, Header } from 'semantic-ui-react';
 import './styles.css'
 
 const Checkbox = (props) => {
@@ -41,6 +41,7 @@ const Checkbox = (props) => {
                 </>
             ))}
             </Segment>
+            <Divider />
             <Segment horizontal className='radio-seg'>    
             <Header size='small'>Extras no Hamburguer?</Header>
             {props.item.extra.map((i, index) => (
