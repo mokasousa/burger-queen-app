@@ -10,7 +10,6 @@ const Prep = () => {
         firebase
             .firestore()
             .collection('Orders')
-            .where('status', '==', 'Pedido Pendente')
             // .orderBy('timeOfOrder', 'desc')
             .onSnapshot((snapshot) => {
                 let itensOrders = [];

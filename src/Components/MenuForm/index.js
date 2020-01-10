@@ -21,7 +21,7 @@ const OrderForm = (props) => {
                     total: props.total,
                     order: props.order,
                     timeOfOrder:firebase.firestore.FieldValue.serverTimestamp(),
-                    status: 'Pedido Pendente'
+                    status: 'Pedido pendente'
                 })
                 .then(() =>{
                     setName('')
