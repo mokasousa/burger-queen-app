@@ -10,7 +10,7 @@ const Prep = () => {
         firebase
             .firestore()
             .collection('Orders')
-            // .orderBy('timeOfOrder', 'desc')
+            .orderBy('timeOfOrder', 'asc')
             .onSnapshot((snapshot) => {
                 let itensOrders = [];
                 snapshot.docs.forEach(item => {

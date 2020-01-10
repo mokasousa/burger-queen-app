@@ -9,6 +9,7 @@
     padding: 1em;
     border-radius: 2px;
     background-color: rgba(192, 171, 149, 0.3);
+    min-height: 215px;
 }
 
 div.order-info {
@@ -16,6 +17,10 @@ div.order-info {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+div.order-info .order-status{
+    color: tomato;
 }
 
 div.order-btn p {
@@ -34,10 +39,14 @@ div.order-btn {
     display: flex;
     flex-direction: column;
     position: relative;
-    bottom:0;
+    bottom: 0;
 }
 
-button.ui.basic.button {
-    background-color: #ffffff;
+button.btn-ready.ui.basic.button {
+    background-color: #4EC475 !important;
+}
+
+button.btn-prepare.ui.basic.button {
+    background-color: #ffffff !important;
 }
 
