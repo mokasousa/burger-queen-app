@@ -1,12 +1,13 @@
 import React from 'react';
 import { Grid } from 'semantic-ui-react';
+import './styles.css';
 
 const Card = (props) => {
     return(
         <>
         <Grid.Row key={props.index} className='order'>
         <div className='order-info'>
-            <p className='order-status'>
+            <p className='order-status' style={props.style}>
                 {props.status}
                 {props.time}
             </p>
@@ -17,8 +18,7 @@ const Card = (props) => {
         </div>
         <div className='order-info-updateStatus'>
             {props.statusTime}
-            {props.name}
-            {props.table}
+            {props.client}
             {props.buttons}
         </div>
         </Grid.Row>

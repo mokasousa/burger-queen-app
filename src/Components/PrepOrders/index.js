@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import firebase from '../../config/firebase.js';
-import { Grid } from 'semantic-ui-react';
-import Button from '../Button';
+import { Button, Grid } from 'semantic-ui-react';
+// import Button from '../Button';
+import Card from '../../Components/OrdersCard';
 import './styles.css';
 
 const PrepOrders = (props) => {
@@ -51,61 +52,69 @@ const PrepOrders = (props) => {
         const sec = Math.floor(timediff/1000);
         const min = Math.floor(sec/60);
         const hour = Math.floor(min/60);
-        const time = hour > 0 
-            ? `${hour%60} horas e ${min%60} minutos`
-            : `${min%60} minutos`;
+        const time = (hour >= 1)
+            ? ` (Em espera a mais de 1h!!!)`
+            : ` (${min%60} minutos)`;
         return time;
 
     }
     
     return (
         <>
-        <div className='orders-prep'>
-            <Grid padded>
-            {(props.ordersToPrep.map((item, index) =>
-                    <>
-                            <Grid.Row key={index} className='order'>
-                            <div className='order-info'>
-                                <p className='order-status'>
-                                    {item.status}
-                                    {timeNow !== 0 ? ` (${timeElapsed(item.timeOfOrder.toDate())})` : ''}
-                                    {/* {` (${timeElapsed(item.timeOfOrder.toDate())})`} */}
-                                </p>
-                                <div className='itens-order'>
-                                {item.order.map((el, index) =>
-                                    (el.option.length !== 0)
-                                    ? (<p key={index}>
-                                        {`${el.count} ${el.name} ${el.option} ${el.extra.join(' ')}`}
-                                        </p>)
-                                    : (<p key={index}>
-                                        {`${el.count} ${el.name}`}
-                                        </p>)
-                                    )}
-                                </div>
-                            </div>
-                            <div className='order-info-updateStatus'>
-                                <p>Pedido às: {item.timeOfOrder.toDate().toLocaleString('pt-BR').substr(11, 19)}</p>
-                                <p>Cliente: {item.name}</p>
-                                <p>Mesa: {item.table}</p>
-                                {item.status !== 'Em preparo...'
-                                    ? <Button 
-                                        class='btn-prepare ui basic button' 
-                                        onClick={(e) => updateStatus(e, item)} 
-                                        title= 'Em preparo'
-                                        />
-                                    : ''}
-                                <Button 
-                                class='btn-ready ui basic button' 
-                                onClick={() => updateOrder(item)} 
-                                title= 'Pronto'
-                                />
-                            </div>
-                        </Grid.Row>
-                        </>
-                ))  
-                                    }
-            </Grid>
-        </div>
+        <Grid padded>
+        {props.ordersToPrep.map((item, index) =>
+            <Card
+            index={index}
+            style={{color: 'tomato'}}
+            status={item.status}
+            time={(timeNow !== 0)
+                ? timeElapsed(item.timeOfOrder.toDate()) 
+                : ''
+            }
+            itens={item.order.map((el, index) =>
+                (el.option.length !== 0)
+                ? (<p key={index}>
+                    {`${el.count} ${el.name} ${el.option} ${el.extra.join(' ')}`}
+                    </p>)
+                : (<p key={index}>
+                    {`${el.count} ${el.name}`}
+                    </p>)
+            )}
+            statusTime={
+                <p>Pedido às: {item.timeOfOrder.toDate().toLocaleString('pt-BR').substr(11, 19)}
+                </p>
+            }
+            client={
+                <>
+                <p>Cliente: {item.name}</p>
+                <p>Mesa: {item.table}</p>
+                </>
+            }
+            buttons={(item.status !== 'Em preparo...')
+                ? <>
+                <Button basic
+                // className='btn-prepare'
+                style={{backgroundColor:'#ffffff'}}
+                onClick={(e) => updateStatus(e, item)} 
+                content= 'Em preparo'
+                />
+                <Button basic
+                // className='btn-ready' 
+                style={{backgroundColor:'#4EC475'}}
+                onClick={() => updateOrder(item)} 
+                content= 'Pronto'
+                />
+                </>
+                : <Button basic
+                // className='btn-ready' 
+                style={{backgroundColor:'#4EC475'}}
+                onClick={() => updateOrder(item)} 
+                content= 'Pronto'
+                />
+            }
+            />
+            )}
+        </Grid>
         </>
     )
 }

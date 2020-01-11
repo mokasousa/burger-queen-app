@@ -24,40 +24,37 @@ const Header = () => {
                 size='small'
                 />
 
-                <Menu.Menu position='right'>
-                    <Menu.Item
-                    className='nav'
-                    name='Menu'
-                    active={activeItem === 'Menu'}
-                    onClick={handleItemClick}
-                    as={Link}
-                    to='/Menu'
-                    />
+            <Menu.Menu position='right'>
+                <Menu.Item
+                className='nav'
+                name='Menu'
+                active={activeItem === 'Menu'}
+                onClick={handleItemClick}
+                as={Link}
+                to='/Menu'
+                />
 
-                    <Menu.Item
-                    className='nav'
-                    name='Preparos'
-                    active={activeItem === 'Preparos'}
-                    onClick={handleItemClick}
-                    as={Link}
-                    to='/Preparos'
-                    />
+                <Menu.Item
+                className='nav'
+                name='Preparos'
+                active={activeItem === 'Preparos'}
+                onClick={handleItemClick}
+                as={Link}
+                to='/Preparos'
+                />
 
-                    <Menu.Item
-                    className='nav'
-                    name='Pedidos'
-                    active={activeItem === 'Pedidos'}
-                    onClick={handleItemClick}
-                    as={Link}
-                    to='/Pedidos'
-                    />
-                </Menu.Menu>
+                <Menu.Item
+                className='nav'
+                name='Pedidos'
+                active={activeItem === 'Pedidos'}
+                onClick={handleItemClick}
+                as={Link}
+                to='/Pedidos'
+                />
+            </Menu.Menu>
         </Menu>
         </>
     )
 }
 
 export default Header;
-
-// import App from '../../App'
-//     <App />

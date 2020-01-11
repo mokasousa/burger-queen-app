@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import firebase from '../../config/firebase.js'
-import OrderList from '../../Components/OrderList'
+import MenuOrderList from '../../Components/MenuOrderList'
 import MenuOrder from '../../Components/MenuOrder'
 import MenuForm from '../../Components/MenuForm'
 import './styles.css'
@@ -27,7 +27,7 @@ const Menu = () => {
             <div className='menu'>
             <MenuOrder menu={menu} order={order} setOrder={setOrder} setTotal={setTotal}/>
             <div className='client-order'>
-            <OrderList order={order} setOrder={setOrder} total={total} setTotal={setTotal}/>
+            <MenuOrderList order={order} setOrder={setOrder} total={total} setTotal={setTotal}/>
             <MenuForm order={order} setOrder={setOrder} total={total} setTotal={setTotal} />
             </div>
             </div>

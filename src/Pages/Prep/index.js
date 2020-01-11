@@ -14,7 +14,7 @@ const Prep = () => {
             .onSnapshot((snapshot) => {
                 let itensOrders = [];
                 snapshot.docs.forEach(item => itensOrders.push({...item.data(), id:item.id}))
-                const orderlist = itensOrders.filter(item => item.status !== 'Pronto')
+                const orderlist = itensOrders.filter(item => item.status !== 'Pronto' && item.status !== 'Finalizado')
                 setOrdersToPrep(orderlist);
             })
     }, [])
@@ -22,7 +22,7 @@ const Prep = () => {
     return(
         <>
         {(ordersToPrep.length > 0)
-            ? <PrepOrders ordersToPrep={ordersToPrep} setOrdersToPrep={setOrdersToPrep}/>
+            ? <PrepOrders ordersToPrep={ordersToPrep} />
             : 'Não há pedidos para preparação...'}
         </>
     )
