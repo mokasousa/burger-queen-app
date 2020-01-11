@@ -13,15 +13,17 @@ const Prep = () => {
             .orderBy('timeOfOrder', 'asc')
             .onSnapshot((snapshot) => {
                 let itensOrders = [];
-                snapshot.docs.forEach(item => {
-                    itensOrders.push({...item.data(), id:item.id})})
-                setOrdersToPrep(itensOrders);
+                snapshot.docs.forEach(item => itensOrders.push({...item.data(), id:item.id}))
+                const orderlist = itensOrders.filter(item => item.status !== 'Pronto')
+                setOrdersToPrep(orderlist);
             })
     }, [])
-
+    
     return(
         <>
-            <PrepOrders ordersToPrep={ordersToPrep} setOrdersToPrep={setOrdersToPrep}/>
+        {(ordersToPrep.length > 0)
+            ? <PrepOrders ordersToPrep={ordersToPrep} setOrdersToPrep={setOrdersToPrep}/>
+            : 'Não há pedidos para preparação...'}
         </>
     )
 }

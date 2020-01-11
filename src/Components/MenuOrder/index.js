@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Button from '../Button';
-import Checkbox from '../Checkbox';
+import CheckboxElement from '../Checkbox';
 import { Icon, Segment } from 'semantic-ui-react';
 import './styles.css'
 
@@ -15,11 +15,12 @@ const MenuOrder = (props) => {
        
         if(item.option.length !== 0) {
 
-            setCheckbox(true)
+            setCheckbox(item);
 
         } else {
 
-            setCheckbox(false)
+            setCheckbox({});
+            setCheckedItems({extra:[]});
 
             const itemInOrderList = document.getElementById('list-' + props.order.findIndex(el => el.name === item.name));
 
@@ -35,7 +36,7 @@ const MenuOrder = (props) => {
             const newBurguerOrder = {...item, option: checkedItems.option, extra: checkedItems.extra, price: item.price + checkedItems.extra.length, count:1};
 
             setCheckedItems({extra:[]});
-            setCheckbox(false);
+            setCheckbox({});
 
             const itemInOrderList = document.getElementById('list-' + props.order.findIndex(el => el.option === checkedItems.option && el.extra.sort().join(',') === checkedItems.extra.sort().join(',')))
 
@@ -71,7 +72,8 @@ const MenuOrder = (props) => {
             : 'btn-menu ui button'}
             onClick={() => {
                 setMenuType('Café-da-Manhã');
-                setCheckbox(false);
+                setCheckbox({});
+                setCheckedItems({extra:[]});
             }} 
             title='Café-da-Manhã'
             />
@@ -109,18 +111,18 @@ const MenuOrder = (props) => {
                                 </li>)
                             : ''
                     } {
-                        (menuType === 'Almoço/Jantar' && item.option.length !== 0 && checkbox === true)
-                        ? <Segment horizontal className='checkbox-item'>
-                        {/* <li> */}
-                            <Checkbox 
-                            item={item} checkedItems={checkedItems} setCheckedItems={setCheckedItems} 
+                        (menuType === 'Almoço/Jantar' && item.option.length !== 0 && checkbox === item)
+                        ? <Segment horizontal='true' className='checkbox-item'>
+                            <CheckboxElement
+                                item={item}
+                                checkedItems={checkedItems}
+                                setCheckedItems={setCheckedItems} 
                             />
-                            
                             <Icon 
-                            name='huge check circle outline' 
-                            onClick={() => confirmOptions(item)}
+                                name='check circle outline' 
+                                size='huge'
+                                onClick={() => confirmOptions(item)}
                             />
-                        {/* </li> */}
                         </Segment>
                         : null
                     }
@@ -133,5 +135,3 @@ const MenuOrder = (props) => {
 }
 
 export default MenuOrder
-
-//flex-order 99

@@ -5,11 +5,10 @@ import Button from '../Button';
 import './styles.css';
 
 const PrepOrders = (props) => {
+
     const [timeNow, setTimeNow] = useState(0);
 
-    useEffect(() => {
-        setInterval(() => setTimeNow(new Date()), 1000)
-    }, [])
+    useEffect(() => setInterval(() => setTimeNow(new Date()), 1000), [])
 
     // useEffect(() => {
     //     return (props.ordersToPrep.length > 0) 
@@ -17,17 +16,24 @@ const PrepOrders = (props) => {
     //     : false
     // }, [])
 
-    const updateStatus = (item) => {
-         firebase
+    const updateStatus = (e, item) => {
+
+        console.log('btn name' + e.target.name);
+        console.log('btn value' + e.target.value);
+        console.log('btn target' + e.target.title);
+
+        firebase
             .firestore()
             .collection('Orders')
             .doc(item.id)
             .update({
                 status:'Em preparo...'
             })
+
     }
 
     const updateOrder = (item) => {
+
         firebase
             .firestore()
             .collection('Orders')
@@ -36,70 +42,68 @@ const PrepOrders = (props) => {
                 status:'Pronto',
                 timeOrderReady: firebase.firestore.FieldValue.serverTimestamp()
             })
+
     }
 
-    const timeElapsed = (timeOrder) => {
-        const timediff = timeNow - timeOrder;
+    const timeElapsed = (timeOfOrder) => {
+
+        const timediff = timeNow - timeOfOrder;
         const sec = Math.floor(timediff/1000);
         const min = Math.floor(sec/60);
         const hour = Math.floor(min/60);
-        const time = /*hour%60+'h:'+ */min%60+' minutos'/*+sec%60+'s'*/
+        const time = hour > 0 
+            ? `${hour%60} horas e ${min%60} minutos`
+            : `${min%60} minutos`;
         return time;
+
     }
-    
-    // props.ordersToPrep.forEach(e => e.order.forEach(i => console.log(i.option.length !== 0)));
     
     return (
         <>
         <div className='orders-prep'>
             <Grid padded>
-            {(props.ordersToPrep.length > 0) 
-            ? (props.ordersToPrep.map((item, index) =>
-                <>
-                
-                {(item.status === 'Pedido pendente' || item.status === 'Em preparo...')
-                    ?   (<>
-                        <Grid.Row key={index} className='order'>
-                        <div className='order-info'>
-                            <p className='order-status'>
-                                {item.status}
-                                {timeNow !== 0 ? ' ('+timeElapsed(item.timeOfOrder.toDate()) + ')': ''}
-                            </p>
-                            <div className='selection-order'>
+            {(props.ordersToPrep.map((item, index) =>
+                    <>
+                            <Grid.Row key={index} className='order'>
+                            <div className='order-info'>
+                                <p className='order-status'>
+                                    {item.status}
+                                    {timeNow !== 0 ? ` (${timeElapsed(item.timeOfOrder.toDate())})` : ''}
+                                    {/* {` (${timeElapsed(item.timeOfOrder.toDate())})`} */}
+                                </p>
+                                <div className='itens-order'>
                                 {item.order.map((el, index) =>
                                     (el.option.length !== 0)
                                     ? (<p key={index}>
                                         {`${el.count} ${el.name} ${el.option} ${el.extra.join(' ')}`}
                                         </p>)
                                     : (<p key={index}>
-                                        {el.count + ' ' + el.name}
+                                        {`${el.count} ${el.name}`}
                                         </p>)
                                     )}
+                                </div>
                             </div>
-                        </div>
-                        <div className='order-btn'>
-                            <p>Hora: {item.timeOfOrder.toDate().toLocaleString('pt-BR').substr(11, 19)}</p>
-                            <p>Cliente: {item.name}</p>
-                            <p>Mesa: {item.table}</p>
-                            {item.status !== 'Em preparo...'
-                            ?<Button 
-                                class='btn-prepare ui basic button' 
-                                onClick={() => updateStatus(item)} 
-                                title= 'Em preparo'
+                            <div className='order-info-updateStatus'>
+                                <p>Pedido às: {item.timeOfOrder.toDate().toLocaleString('pt-BR').substr(11, 19)}</p>
+                                <p>Cliente: {item.name}</p>
+                                <p>Mesa: {item.table}</p>
+                                {item.status !== 'Em preparo...'
+                                    ? <Button 
+                                        class='btn-prepare ui basic button' 
+                                        onClick={(e) => updateStatus(e, item)} 
+                                        title= 'Em preparo'
+                                        />
+                                    : ''}
+                                <Button 
+                                class='btn-ready ui basic button' 
+                                onClick={() => updateOrder(item)} 
+                                title= 'Pronto'
                                 />
-                            :''}
-                            <Button 
-                            class='btn-ready ui basic button' 
-                            onClick={() => updateOrder(item)} 
-                            title= 'Pronto'
-                            />
-                        </div>
+                            </div>
                         </Grid.Row>
-                        </>)
-                    :   null}
-                </>
+                        </>
                 ))  
-            : 'Não há pedidos para preparação...'}
+                                    }
             </Grid>
         </div>
         </>

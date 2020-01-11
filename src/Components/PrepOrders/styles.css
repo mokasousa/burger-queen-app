@@ -3,6 +3,7 @@
     display: flex;
     flex-wrap: wrap;
     width: 100%;
+    max-width: 730px;
     border: 2px solid #545353;
     justify-content: space-between !important;
     margin: 0.7em 1.5em;
@@ -13,7 +14,7 @@
 }
 
 div.order-info {
-    width: 70%;
+    width: 65%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -23,19 +24,19 @@ div.order-info .order-status{
     color: tomato;
 }
 
-div.order-btn p {
-    margin-bottom: 0;
-}
-
-div.order-btn {
-    width: 24%;
+div.order-info-updateStatus {
+    width: 30%;
     display:flex;
     flex-direction: column;
-    margin:0 1em;
+    margin:0;
     /* flex-wrap: wrap; */
 }
 
-.selection-order {
+div.order-info-updateStatus p {
+    margin-bottom: 0;
+}
+
+.itens-order {
     display: flex;
     flex-direction: column;
     position: relative;
