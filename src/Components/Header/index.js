@@ -3,6 +3,22 @@ import { Link } from 'react-router-dom';
 import { Image, Menu } from 'semantic-ui-react';
 import './styles.css';
 
+const styleTabular = {
+    margin: '1.5em 0',
+    borderBottom: '2px solid #545353'
+}
+
+const styleImage = {
+    margin: '1em',
+    minWidth: '7rem'
+}
+
+const styleNav = {
+    marginRight: '1em',
+    fontSize: 'medium'
+}
+
+
 const Header = () => {
 
     const pathname = window.location.pathname;
@@ -17,16 +33,16 @@ const Header = () => {
 
     return (
         <> 
-        <Menu position='top' tabular>
+        <Menu tabular attached='top' style={styleTabular}>
             <Image 
-                src={require('../../Images/Burger-Queen-Logo.png')} 
-                alt='Burger Queen Logo' 
-                size='small'
-                />
+            style={styleImage}
+            src={require('../../Images/Burger-Queen-Logo.png')} 
+            alt='Burger Queen Logo' 
+            size='small'
+            />
 
-            <Menu.Menu position='right'>
+            <Menu.Menu position='right' style={styleNav}>
                 <Menu.Item
-                className='nav'
                 name='Menu'
                 active={activeItem === 'Menu'}
                 onClick={handleItemClick}
@@ -35,7 +51,6 @@ const Header = () => {
                 />
 
                 <Menu.Item
-                className='nav'
                 name='Preparos'
                 active={activeItem === 'Preparos'}
                 onClick={handleItemClick}
@@ -44,7 +59,6 @@ const Header = () => {
                 />
 
                 <Menu.Item
-                className='nav'
                 name='Pedidos'
                 active={activeItem === 'Pedidos'}
                 onClick={handleItemClick}

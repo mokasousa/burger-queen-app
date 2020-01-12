@@ -1,11 +1,37 @@
 import React, { useState } from 'react';
 import firebase from '../../config/firebase.js';
-import Button from '../Button';
+import { Input, Button, Form, Confirm } from 'semantic-ui-react';
 import './styles.css'
 
+const formStyle = {
+    fontSize: 'medium',
+    padding: '1em 0.5em',
+    flexGrow: 1,
+    margin: '0 0.5em',
+    maxWidth: '80%'
+}
+
+const buttonStyle = {
+    backgroundColor: '#4EC475',
+    border: '2px solid #545353',
+    fontSize: 'medium',
+    marginTop: '1em'
+}
+
+const inputStyle = {
+    border: '2px solid #545353',
+    borderRadius: '2px',
+    maxWidth: '350px'
+}
+
 const OrderForm = (props) => {
+
     const [name, setName] = useState('');
     const [table, setTable] = useState('');
+    const [alert, setAlert] = useState(false)
+
+    function show() {setAlert(true)};
+    function handleConfirm() {setAlert(false)};
 
     function onSubmit(e) {
         e.preventDefault();
@@ -32,35 +58,46 @@ const OrderForm = (props) => {
 
         } else {
 
-           return alert('Insira o nome, a mesa e o pedido do cliente!')
+            show()
+
+        //    return alert('Insira o nome, a mesa e o pedido do cliente!')
         }
     }
 
     return (
-        <form class='ui form' onSubmit={onSubmit}>
-            <div class="field">
+        <>
+        <Form onSubmit={onSubmit} style={formStyle}>
+            <Form.Field>
                 <label>Cliente:</label>
-                <input 
-                type='text' 
+                <Input
+                style={inputStyle}
                 value={name}
                 placeholder='Nome' 
                 onChange={ e => setName(e.currentTarget.value)}>
-                </input>
-            </div>
-            <div class="field">
+                </Input>
+            </Form.Field>
+            <Form.Field>
                 <label>Mesa:</label>
-                <input 
-                type='text' 
+                <Input
+                style={inputStyle}
                 value={table} 
                 placeholder='Número' 
                 onChange={ e => setTable(e.currentTarget.value)}>
-                </input>
-            </div>
-            <Button 
-            class='ui button'
-            title='Enviar'
+                </Input>
+            </Form.Field>
+            <Button
+            style={buttonStyle}
+            type='submit'
+            content='Enviar'
             />
-        </form>
+        </Form>
+        <Confirm
+        open={alert}
+        content='Insira o nome, a mesa e o pedido do cliente!'
+        onConfirm={handleConfirm}
+        cancelButton=''
+        />
+        </>
     )
 } 
 

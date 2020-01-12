@@ -33,7 +33,6 @@ const CheckboxElement = (props) => {
                 <>
                 <Form.Field key={index}>
                     <Radio
-                    
                     label={i}
                     name='option'
                     value={i}

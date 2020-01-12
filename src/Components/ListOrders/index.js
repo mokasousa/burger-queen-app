@@ -1,7 +1,6 @@
 import React from 'react';
 import firebase from '../../config/firebase.js';
 import { Button, Grid } from 'semantic-ui-react';
-// import Button from '../Button';
 import Card from '../../Components/OrdersCard';
 import './styles.css';
 

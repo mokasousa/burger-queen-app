@@ -1,8 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import Button from '../Button';
+//import Button from '../Button';
 import CheckboxElement from '../Checkbox';
-import { Icon, Segment } from 'semantic-ui-react';
-import './styles.css'
+import { Button, Icon, Segment } from 'semantic-ui-react';
+import './styles.css';
+
+const styleMenuButtons = {
+    backgroundColor:'#fff',
+    border: '2px solid #545353',
+    borderRadius: '2px',
+    fontWeight: 'bold',
+    width: '285px',
+    margin: '0em 0.7em 0.4em 0.7em',
+    fontSize: 'medium'
+}
 
 const MenuOrder = (props) => {
 
@@ -65,25 +75,25 @@ const MenuOrder = (props) => {
     return (
         <>
         <div className='type-menu ui buttons'>
-
+    
             <Button 
-            class={menuType === 'Café-da-Manhã' 
-            ? 'btn-menu ui button active' 
-            : 'btn-menu ui button'}
+            className={menuType === 'Café-da-Manhã' 
+            ? 'active' 
+            : ''}
             onClick={() => {
                 setMenuType('Café-da-Manhã');
                 setCheckbox({});
                 setCheckedItems({extra:[]});
             }} 
-            title='Café-da-Manhã'
+            content='Café-da-Manhã'
             />
 
             <Button 
-            class={menuType === 'Almoço/Jantar' 
-            ? 'btn-menu ui button active' 
-            : 'btn-menu ui button'}
+            className={menuType === 'Almoço/Jantar' 
+            ? 'active' 
+            : ''}
             onClick={() => setMenuType('Almoço/Jantar')}
-            title='Almoço/Jantar'
+            content='Almoço/Jantar'
             />
 
         </div>   
@@ -95,18 +105,20 @@ const MenuOrder = (props) => {
                     {
                         (menuType === 'Café-da-Manhã' && item.breakfast === true)
                             ? (<li key={index}>
-                                <Button 
-                                class='btn-menu-items ui basic button' 
+                                <Button
+                                style={styleMenuButtons}
+                                className='btn-menu-items' 
                                 onClick={() => addItem(item)} 
-                                title={item.name + ' R$' + item.price} 
+                                content={item.name + ' R$' + item.price} 
                                 />
                                 </li>)
                             : (menuType === 'Almoço/Jantar' && item.breakfast === false)
                             ? (<li key={index}>
-                                <Button 
-                                class='btn-menu-items ui basic button' 
+                                <Button
+                                style={styleMenuButtons}
+                                className='btn-menu-items' 
                                 onClick={() => addItem(item)} 
-                                title={item.name + ' R$' + item.price} 
+                                content={item.name + ' R$' + item.price} 
                                 />
                                 </li>)
                             : ''
@@ -114,14 +126,15 @@ const MenuOrder = (props) => {
                         (menuType === 'Almoço/Jantar' && item.option.length !== 0 && checkbox === item)
                         ? <Segment horizontal='true' className='checkbox-item'>
                             <CheckboxElement
-                                item={item}
-                                checkedItems={checkedItems}
-                                setCheckedItems={setCheckedItems} 
+                            item={item}
+                            checkedItems={checkedItems}
+                            setCheckedItems={setCheckedItems} 
                             />
                             <Icon 
-                                name='check circle outline' 
-                                size='huge'
-                                onClick={() => confirmOptions(item)}
+                            style={{margin:'0.2em'}}
+                            name='check circle outline' 
+                            size='huge'
+                            onClick={() => confirmOptions(item)}
                             />
                         </Segment>
                         : null
