@@ -24,7 +24,7 @@ i.check.circle.outline.huge.icon:active{
     transform: translateY(2px);
 }
 
-div.ui.segment.checkbox-item {
+/* div.ui.segment.checkbox-item {
     border: 2px solid #545353;
     width: 100%;
     max-width: 700px;
@@ -33,9 +33,9 @@ div.ui.segment.checkbox-item {
     justify-content: space-between;
     order: 99;
     margin-bottom:0;
-}
+} */
 
-.order-menu ul{
+/* .order-menu ul{
     margin: 1.5em;
     max-width: 700px;
     display: flex;
@@ -44,20 +44,20 @@ div.ui.segment.checkbox-item {
     align-items: center;
     list-style-type: none;
     justify-content: space-evenly;
-}
+} */
 
-
+/* 
 div.type-menu.ui.buttons .ui.button {
     background-color:  rgb(192, 171, 149, 0.3);
     border: 2px solid #545353;
     font-weight: bold;
     font-size: medium;
 }
-
-div.type-menu.ui.buttons .ui.button.active {
+*/
+button.ui.button.type-menu.active {
     color: #4EC475;
-    background-color: transparent;
-}
+    background-color: transparent !important;
+} 
 
 @media (max-width: 415px) {
     div.ui.segment.checkbox-item {

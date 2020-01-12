@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 //import Button from '../Button';
 import CheckboxElement from '../Checkbox';
-import { Button, Icon, Segment } from 'semantic-ui-react';
+import { Button, Icon, Segment, Confirm } from 'semantic-ui-react';
 import './styles.css';
 
 const styleMenuButtons = {
@@ -14,11 +14,44 @@ const styleMenuButtons = {
     fontSize: 'medium'
 }
 
+const styleCheckboxItem = {
+    border: '2px solid #545353',
+    width: '100%',
+    maxWidth: '621px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    order: 99,
+    marginBottom: 0
+}
+
+const styleOrderMenu = {
+    margin: '1.5em auto',
+    maxWidth: '700px',
+    display: 'flex',
+    flexWrap: 'wrap',
+    alignContent: 'flex-start',
+    alignItems: 'center',
+    listStyleType: 'none',
+    justifyContent: 'space-evenly'
+}
+
+const styleTypeMenuButton = {
+    backgroundColor: 'rgb(192, 171, 149, 0.3)',
+    border: '2px solid #545353',
+    fontWeight: 'bold',
+    fontSize: 'medium'
+}
+
 const MenuOrder = (props) => {
 
     const [menuType, setMenuType] = useState('Café-da-Manhã');
     const [checkedItems, setCheckedItems] = useState({extra:[]});
-    const [checkbox, setCheckbox] = useState(false)
+    const [checkbox, setCheckbox] = useState(false);
+    const [alert, setAlert] = useState(false)
+
+    function show() {setAlert(true)};
+    function handleConfirm() {setAlert(false)};
 
 
     const addItem = (item) => {
@@ -57,8 +90,9 @@ const MenuOrder = (props) => {
         } else {
 
             setCheckedItems({extra:[]})
+            show()
 
-            return alert('Escolha o tipo de Hamburguer!')                
+            // return alert('Escolha o tipo de Hamburguer!')                
         }
     }
 
@@ -74,12 +108,14 @@ const MenuOrder = (props) => {
 
     return (
         <>
-        <div className='type-menu ui buttons'>
+        <div className='menu-buttons' style={{margin: '0 auto'}}>
+        <div className='ui buttons' >
     
             <Button 
+            style={styleTypeMenuButton}
             className={menuType === 'Café-da-Manhã' 
-            ? 'active' 
-            : ''}
+            ? 'type-menu active' 
+            : 'type-menu'}
             onClick={() => {
                 setMenuType('Café-da-Manhã');
                 setCheckbox({});
@@ -89,16 +125,17 @@ const MenuOrder = (props) => {
             />
 
             <Button 
+            style={styleTypeMenuButton}
             className={menuType === 'Almoço/Jantar' 
-            ? 'active' 
-            : ''}
+            ? 'type-menu active' 
+            : 'type-menu'}
             onClick={() => setMenuType('Almoço/Jantar')}
             content='Almoço/Jantar'
             />
 
         </div>   
-        <div className='order-menu'>
-        <ul>
+        
+        <ul style={styleOrderMenu}>
             {props.menu.map((item, index) => {
                 return (
                     <>
@@ -124,7 +161,7 @@ const MenuOrder = (props) => {
                             : ''
                     } {
                         (menuType === 'Almoço/Jantar' && item.option.length !== 0 && checkbox === item)
-                        ? <Segment horizontal='true' className='checkbox-item'>
+                        ? <Segment horizontal='true' className='checkbox-item' style={styleCheckboxItem}>
                             <CheckboxElement
                             item={item}
                             checkedItems={checkedItems}
@@ -135,6 +172,12 @@ const MenuOrder = (props) => {
                             name='check circle outline' 
                             size='huge'
                             onClick={() => confirmOptions(item)}
+                            />
+                            <Confirm
+                            open={alert}
+                            content='Escolha o tipo de Hamburguer!'
+                            onConfirm={handleConfirm}
+                            cancelButton=''
                             />
                         </Segment>
                         : null

@@ -5,6 +5,20 @@ import { Button, Grid } from 'semantic-ui-react';
 import Card from '../../Components/OrdersCard';
 import './styles.css';
 
+const buttonStyle1 = {
+    backgroundColor:'#ffffff',
+    border: '2px solid #545353',
+    fontSize: 'medium',
+    marginTop: '0.5em'
+}
+
+const buttonStyle2 = {
+    backgroundColor:'#4EC475',
+    border: '2px solid #545353',
+    fontSize: 'medium',
+    marginTop: '0.5em'
+}
+
 const PrepOrders = (props) => {
 
     const [timeNow, setTimeNow] = useState(0);
@@ -61,7 +75,7 @@ const PrepOrders = (props) => {
     
     return (
         <>
-        <Grid padded>
+        <Grid padded style={{justifyContent: 'center'}}>
         {props.ordersToPrep.map((item, index) =>
             <Card
             index={index}
@@ -92,22 +106,22 @@ const PrepOrders = (props) => {
             }
             buttons={(item.status !== 'Em preparo...')
                 ? <>
-                <Button basic
+                <Button
                 // className='btn-prepare'
-                style={{backgroundColor:'#ffffff'}}
+                style={buttonStyle1}
                 onClick={(e) => updateStatus(e, item)} 
                 content= 'Em preparo'
                 />
-                <Button basic
+                <Button
                 // className='btn-ready' 
-                style={{backgroundColor:'#4EC475'}}
+                style={buttonStyle2}
                 onClick={() => updateOrder(item)} 
                 content= 'Pronto'
                 />
                 </>
-                : <Button basic
+                : <Button
                 // className='btn-ready' 
-                style={{backgroundColor:'#4EC475'}}
+                style={buttonStyle1}
                 onClick={() => updateOrder(item)} 
                 content= 'Pronto'
                 />

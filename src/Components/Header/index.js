@@ -4,7 +4,7 @@ import { Image, Menu } from 'semantic-ui-react';
 import './styles.css';
 
 const styleTabular = {
-    margin: '1.5em 0',
+    margin: '1.5em auto',
     borderBottom: '2px solid #545353'
 }
 

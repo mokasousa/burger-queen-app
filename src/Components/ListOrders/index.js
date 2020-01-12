@@ -4,6 +4,12 @@ import { Button, Grid } from 'semantic-ui-react';
 import Card from '../../Components/OrdersCard';
 import './styles.css';
 
+const buttonStyle = {
+    backgroundColor:'#ffffff',
+    border: '2px solid #545353',
+    fontSize: 'medium',
+    marginTop: '0.5em'
+}
 
 const AllOrders = (props) => {
 
@@ -34,7 +40,7 @@ const AllOrders = (props) => {
     
     return (
         <>
-        <Grid padded>
+        <Grid padded style={{justifyContent: 'center'}}>
         {props.ordersHistory.map((item, index) =>
                 <Card
                 index={index}
@@ -76,9 +82,9 @@ const AllOrders = (props) => {
                     </>
                 }
                 buttons={(item.status==='Pronto')
-                    ? <Button basic
+                    ? <Button
                         // className='btn-finalize'
-                        style={{backgroundColor:'#ffffff'}} 
+                        style={buttonStyle} 
                         onClick={() => updateOrder(item)} 
                         content= 'Finalizar'
                         />
