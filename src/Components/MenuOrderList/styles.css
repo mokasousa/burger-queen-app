@@ -7,38 +7,3 @@
         max-width: 100%;
     }
 }
-/* .order-list {
-    padding: 1em 0.5em;
-    font-weight: bold;
-    text-align: right;
-    min-width: 280px;
-    max-width: 100%;
-    border-radius: 2px;
-    flex-grow: 10;
-} */
-
-/* ul {
-    list-style: none;
-    min-width: 280px;
-    max-width: 430px;
-} */
-/* 
-.order-list li{
-    display:flex;
-    flex-wrap: wrap;
-    justify-content: right;
-    margin: 1.2em 0.3em;
-    border-radius: 2px; 
-} */
-
-/* i.outline.large.icon {
-    margin: 0 0.5em;
-    color: #545353;
-} */
-
-/* .total {
-    background-color: rgb(192, 171, 149, 0.4);
-} */
-
-/* .order-list li{
-    flex-wrap: wrap; */

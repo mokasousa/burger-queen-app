@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-//import Button from '../Button';
 import CheckboxElement from '../Checkbox';
 import { Button, Icon, Segment, Confirm } from 'semantic-ui-react';
 import './styles.css';

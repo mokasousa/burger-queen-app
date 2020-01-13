@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import firebase from '../../config/firebase.js';
 import { Button, Grid } from 'semantic-ui-react';
-// import Button from '../Button';
 import Card from '../../Components/OrdersCard';
-import './styles.css';
 
 const buttonStyle1 = {
     backgroundColor:'#ffffff',
@@ -54,6 +52,7 @@ const PrepOrders = (props) => {
             .collection('Orders')
             .doc(item.id)
             .update({
+                ordenate:1,
                 status:'Pronto',
                 timeOrderReady: firebase.firestore.FieldValue.serverTimestamp()
             })
@@ -107,21 +106,18 @@ const PrepOrders = (props) => {
             buttons={(item.status !== 'Em preparo...')
                 ? <>
                 <Button
-                // className='btn-prepare'
                 style={buttonStyle1}
                 onClick={(e) => updateStatus(e, item)} 
                 content= 'Em preparo'
                 />
                 <Button
-                // className='btn-ready' 
                 style={buttonStyle2}
                 onClick={() => updateOrder(item)} 
                 content= 'Pronto'
                 />
                 </>
                 : <Button
-                // className='btn-ready' 
-                style={buttonStyle1}
+                style={buttonStyle2}
                 onClick={() => updateOrder(item)} 
                 content= 'Pronto'
                 />

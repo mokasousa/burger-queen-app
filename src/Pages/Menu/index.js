@@ -10,7 +10,6 @@ const styleClientOrder = {
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'center',
-    // width:'100%',
     flexGrow:1,
     borderRadius: '2px',
     maxWidth: '621px',

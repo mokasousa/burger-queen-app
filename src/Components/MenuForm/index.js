@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import firebase from '../../config/firebase.js';
 import { Input, Button, Form, Confirm } from 'semantic-ui-react';
-import './styles.css'
 
 const formStyle = {
     fontSize: 'medium',
@@ -47,7 +46,8 @@ const OrderForm = (props) => {
                     total: props.total,
                     order: props.order,
                     timeOfOrder:firebase.firestore.FieldValue.serverTimestamp(),
-                    status: 'Pedido pendente'
+                    status: 'Pedido pendente',
+                    ordenate:2
                 })
                 .then(() =>{
                     setName('')
@@ -59,8 +59,6 @@ const OrderForm = (props) => {
         } else {
 
             show()
-
-        //    return alert('Insira o nome, a mesa e o pedido do cliente!')
         }
     }
 

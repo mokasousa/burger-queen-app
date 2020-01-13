@@ -1,6 +1,5 @@
 import React, { useEffect} from 'react';
 import { Icon } from 'semantic-ui-react';
-//import Button from '../Button';
 import './styles.css'
 
 const styleOrderList = {
@@ -89,5 +88,3 @@ const OrderList = (props) => {
 }
 
 export default OrderList;
-
-// style={{transition: props.color + '3s linear'}}

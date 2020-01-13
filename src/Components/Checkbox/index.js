@@ -1,6 +1,5 @@
 import React from 'react';
 import { Form, Checkbox, Radio, Header } from 'semantic-ui-react';
-import './styles.css'
 
 const CheckboxElement = (props) => {
 

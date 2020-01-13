@@ -2,7 +2,6 @@ import React from 'react';
 import firebase from '../../config/firebase.js';
 import { Button, Grid } from 'semantic-ui-react';
 import Card from '../../Components/OrdersCard';
-import './styles.css';
 
 const buttonStyle = {
     backgroundColor:'#ffffff',
@@ -20,6 +19,7 @@ const AllOrders = (props) => {
             .collection('Orders')
             .doc(item.id)
             .update({
+                ordenate:3,
                 status:'Finalizado'
             })
 
