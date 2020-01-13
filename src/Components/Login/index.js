@@ -30,7 +30,7 @@ const Login = (/*{ history }*/) => {
       firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
-      .then()
+      .then(() => window.location.pathname = '/Pedidos')
       /*.then((cred) => {
         if (cred.user) {
           history.push('/Menu');
@@ -71,11 +71,13 @@ const Login = (/*{ history }*/) => {
         onChange={ e => setPassword(e.currentTarget.value)}
         ></Input>
       </Form.Field>
+      {/* <Link to='/Pedidos'> */}
       <Button 
       style={buttonStyle}
       type='submit'
       content='Entrar'
       />
+      {/* </Link> */}
     </Form>
     <Message attached='bottom'>Para cadastrar-se <Link to='/Cadastrar'>clique aqui</Link>.
     </Message>

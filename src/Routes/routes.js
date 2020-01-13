@@ -28,7 +28,7 @@ const Routes = () => {
                  .doc(user.uid)
                  .get()
                  .then((doc) => {
-                    console.log('trabalha no '+doc.data().workIn)
+                    // console.log('trabalha no '+doc.data().workIn)
                     setCurrUser(doc.data().workIn)
                 })
              } else {
@@ -70,13 +70,11 @@ const Routes = () => {
                 
                 {(logged && currUser === 'Salão')
                 ? (<>
-                    <Route exact path = '/' component={Menu} />
                     <Route path='/Menu' component={Menu} />
                     <Route path='/Pedidos' component={OrderHistory} />
                     </>)
                 : (logged && currUser === 'Cozinha')
                 ? (<>
-                    <Route exact path = '/' component={Prep} />
                     <Route path='/Preparos' component={Prep} />
                     <Route path='/Pedidos' component={OrderHistory} />
                     </>)

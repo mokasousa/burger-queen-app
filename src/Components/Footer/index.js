@@ -11,7 +11,7 @@ const Footer = () => {
         firebase
           .auth()
           .signOut()
-          .then()
+          .then(() => window.location.pathname = '/')
           // .then(() => {
           //   //props.history.push('/login');
           //   //window.location.path = '/Login'

@@ -50,9 +50,7 @@ const SignUp = (/*{ history }*/) => {
                       name: name,
                       workIn: radio
                     })
-                    // .then(() => {
-                    //   history.push('/Menu');
-                    // });
+                    .then(() => window.location.pathname = '/Pedidos')
                 });
             }
           }).catch((error) => {
