@@ -5,6 +5,8 @@ import { Segment, Icon } from 'semantic-ui-react';
 
 const Footer = () => {
 
+
+
     function logOut() {
         firebase
           .auth()

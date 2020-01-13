@@ -2,7 +2,6 @@ import React, { useState, useContext } from 'react';
 import firebase from '../../config/firebase.js';
 import { Image, Button, Header, Form, Input, Message } from 'semantic-ui-react';
 import {Link, withRouter, Redirect} from 'react-router-dom';
-import AuthFirebase from '../../Components/Auth';
 // import AuthFirebase from '../Components/Auth';
 
 const buttonStyle = {
@@ -78,7 +77,7 @@ const Login = (/*{ history }*/) => {
       content='Entrar'
       />
     </Form>
-    <Message attached='bottom'>Para cadastrar-se <Link to='/Cadastro'>clique aqui</Link>.
+    <Message attached='bottom'>Para cadastrar-se <Link to='/Cadastrar'>clique aqui</Link>.
     </Message>
     </>
   )
