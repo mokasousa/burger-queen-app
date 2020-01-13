@@ -1,22 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import firebase from '../../config/firebase.js';
 
-const AuthFirebase = ({children}) => {
+const AuthFirebase = (/*{children}*/) => {
 
-    const [currUser, setCurrUser] = useState(null);
+    console.log('para')
 
-    useEffect(() => {
-        firebase
-         .auth()
-         .onAuthStateChanged(setCurrUser)
-    }, [])
+    // const [currUser, setCurrUser] = useState(null);
 
-    return(
+    // useEffect(() => {
+    //     firebase
+    //      .auth()
+    //      .onAuthStateChanged(setCurrUser)
+    // }, [])
 
-        <AuthContext.Provider value={currUser}>
-            {children}
-        </AuthContext.Provider>
-    )
+    // return(
+
+    //     // <AuthContext.Provider value={currUser}>
+    //     //     {children}
+    //     // </AuthContext.Provider>
+    // )
 }
 
 export default AuthFirebase

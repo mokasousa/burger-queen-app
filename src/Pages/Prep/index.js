@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import firebase from '../../config/firebase.js';
 import PrepOrders from '../../Components/PrepOrders';
+import Header from '../../Components/Header';
+import Footer from '../../Components/Footer';
 
 const Prep = () => {
 
@@ -21,9 +23,11 @@ const Prep = () => {
     
     return(
         <>
+        <Header />
         {(ordersToPrep.length > 0)
             ? <PrepOrders ordersToPrep={ordersToPrep} />
             : 'Não há pedidos para preparação...'}
+        <Footer />
         </>
     )
 }

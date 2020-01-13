@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import firebase from '../../config/firebase.js';
 import ListOrders from '../../Components/ListOrders';
+import Header from '../../Components/Header';
+import Footer from '../../Components/Footer';
 
 const OrderHistory = () => {
 
@@ -21,9 +23,11 @@ const OrderHistory = () => {
     
     return(
         <>
+        <Header />
         {(ordersHistory.length > 0)
             ? <ListOrders ordersHistory={ordersHistory} />
-            : 'Ainda não há pedidos hoje'}
+            : ''}
+        <Footer />
         </>
     )
 }

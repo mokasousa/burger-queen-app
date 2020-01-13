@@ -1,5 +1,7 @@
 import React from 'react';
-import {withRouter} from 'react-router-dom';
+import firebase from '../../config/firebase.js';
+import { Segment, Icon } from 'semantic-ui-react';
+//import {withRouter} from 'react-router-dom';
 
 const Footer = () => {
 
@@ -7,9 +9,11 @@ const Footer = () => {
         firebase
           .auth()
           .signOut()
-          .then(() => {
-            props.history.push('/login');
-          });
+          .then()
+          // .then(() => {
+          //   //props.history.push('/login');
+          //   //window.location.path = '/Login'
+          // });
       }
 
     return (
@@ -27,4 +31,5 @@ const Footer = () => {
     )
 }
 
-export default withRouter(Footer)
+//export default withRouter(Footer)
+export default Footer

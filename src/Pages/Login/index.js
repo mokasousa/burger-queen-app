@@ -1,5 +1,6 @@
-import React, { useContext } from 'react';
-import { Image, Button, Header, Form, Input } from 'semantic-ui-react';
+import React, { useState, useContext } from 'react';
+import firebase from '../../config/firebase.js';
+import { Image, Button, Header, Form, Input, Message } from 'semantic-ui-react';
 import {Link, withRouter, Redirect} from 'react-router-dom';
 import AuthFirebase from '../../Components/Auth';
 // import AuthFirebase from '../Components/Auth';
@@ -17,7 +18,7 @@ const inputStyle = {
   maxWidth: '350px'
 }
 
-const Login = ({ history }) => {
+const Login = (/*{ history }*/) => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -30,11 +31,12 @@ const Login = ({ history }) => {
       firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
-      .then((cred) => {
+      .then()
+      /*.then((cred) => {
         if (cred.user) {
           history.push('/Menu');
         }
-      }).catch((error) => {
+      })*/.catch((error) => {
         console.log(error.code);
       })
     )
@@ -48,7 +50,7 @@ const Login = ({ history }) => {
     <Image 
       src={require('../../Images/Burger-Queen-Logo.png')} 
       alt='Burger Queen Logo' 
-      size='huge'
+      size='large'
       />
     <Form onSubmit={onSubmit}>
       <Header>Entrar</Header>

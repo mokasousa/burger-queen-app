@@ -21,13 +21,10 @@ const PrepOrders = (props) => {
 
     const [timeNow, setTimeNow] = useState(0);
 
-    useEffect(() => setInterval(() => setTimeNow(new Date()), 1000), [])
-
-    // useEffect(() => {
-    //     return (props.ordersToPrep.length > 0) 
-    //     ? setInterval(() => setTimeNow(new Date()), 1000)
-    //     : false
-    // }, [])
+    useEffect(() => {
+        const time = setInterval(() => setTimeNow(new Date()), 1000);
+        return () => clearInterval(time); //return when react unmount
+    }, [])
 
     const updateStatus = (e, item) => {
 

@@ -3,6 +3,8 @@ import firebase from '../../config/firebase.js';
 import MenuOrderList from '../../Components/MenuOrderList';
 import MenuOrder from '../../Components/MenuOrder';
 import MenuForm from '../../Components/MenuForm';
+import Header from '../../Components/Header';
+import Footer from '../../Components/Footer';
 import './styles.css';
 
 const styleClientOrder = {
@@ -41,7 +43,8 @@ const Menu = () => {
     }, [])
  
     return(
-        <>   
+        <>  
+            <Header />
             <div className='menu-page' style={styleMenuPage}>
             <div style={{flexGrow:15}}>
             <MenuOrder menu={menu} order={order} setOrder={setOrder} setTotal={setTotal}/>
@@ -51,6 +54,7 @@ const Menu = () => {
             <MenuForm order={order} setOrder={setOrder} total={total} setTotal={setTotal} />
             </div>
             </div>
+            <Footer />
         </>
     )
 }

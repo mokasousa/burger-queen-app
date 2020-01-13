@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useState}from 'react';
+import firebase from '../../config/firebase.js';
 import { Image, Button, Header, Radio, Form, Input } from 'semantic-ui-react';
 import { withRouter } from 'react-router-dom';
 
@@ -15,20 +16,25 @@ const inputStyle = {
   maxWidth: '350px'
 }
 
-const SignUp = ({ history }) => {
+const SignUp = (/*{ history }*/) => {
 
   const [radio, setRadio] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const handleChange = (e, {value, checked}) => {
+    return checked ? setRadio(value) : false
+}  
+
   function onSubmit(e) {
     e.preventDefault();
 
-    if(name.length, email.length, password.length, radio.length > 0) {
+    if(name.length > 0 && email.length > 0 && password.length > 0 && radio.length > 0) {
 
-      return (
+      // return (
         firebase
+          .auth()
           .createUserWithEmailAndPassword(email, password)
           .then((resp) => {
             if (resp.user) {
@@ -36,19 +42,23 @@ const SignUp = ({ history }) => {
                 displayName: name,
               })
                 .then(() => {
-                  window.db.collection('Users').doc(resp.user.uid).set({
-                    name: name,
-                    workIn: radio
-                  })
-                    .then(() => {
-                      history.push('/Menu');
-                    });
+                  firebase
+                    .firestore()
+                    .collection('Users')
+                    .doc(resp.user.uid)
+                    .set({
+                      name: name,
+                      workIn: radio
+                    })
+                    // .then(() => {
+                    //   history.push('/Menu');
+                    // });
                 });
             }
           }).catch((error) => {
             console.log(error);
           })
-      )
+      // )
     }
   }
 
@@ -57,7 +67,7 @@ const SignUp = ({ history }) => {
     <Image 
       src={require('../../Images/Burger-Queen-Logo.png')} 
       alt='Burger Queen Logo' 
-      size='huge'
+      size='large'
       />
     <Form onSubmit={onSubmit}>
       <Header>Cadastro</Header>
@@ -67,14 +77,14 @@ const SignUp = ({ history }) => {
         name='trabalho'
         value='Cozinha'
         checked={radio === 'Cozinha'}
-        onChange={() => setRadio({value})}
+        onChange={handleChange}
         />
         <Radio 
         label='Salão' 
         name='trabalho'
         value='Salão'
         checked={radio === 'Salão'}
-        onChange={() => setRadio({value})}
+        onChange={handleChange}
         />
       </Form.Field>
       <Form.Field>
