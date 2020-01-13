@@ -10,7 +10,7 @@ const OrderHistory = () => {
         firebase
             .firestore()
             .collection('Orders')
-            // .orderBy('ordenate', 'asc')
+            .orderBy('ordenate', 'asc')
             .orderBy('timeOfOrder', 'asc')
             .onSnapshot((snapshot) => {
                 let itensOrders = [];
