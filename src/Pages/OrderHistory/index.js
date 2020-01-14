@@ -4,6 +4,13 @@ import ListOrders from '../../Components/ListOrders';
 import Header from '../../Components/Header';
 import Footer from '../../Components/Footer';
 
+const styleContent = {
+    display:'flex', 
+    flexDirection:'column', 
+    justifyContent:'space-between',
+    height:'100vh'
+}
+
 const OrderHistory = () => {
 
     const [ordersHistory, setOrdersHistory] = useState([]);
@@ -24,10 +31,12 @@ const OrderHistory = () => {
     return(
         <>
         <Header />
+        <div style={styleContent}>
         {(ordersHistory.length > 0)
             ? <ListOrders ordersHistory={ordersHistory} />
             : ''}
         <Footer />
+        </div>
         </>
     )
 }

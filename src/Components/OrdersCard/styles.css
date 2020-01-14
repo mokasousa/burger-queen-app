@@ -1,0 +1,9 @@
+@media (max-width: 415px) {
+    div.order-info{
+        width:100%
+    }
+    div.order-info-updateStatus{
+        width:100%;
+        margin: 2em 0
+    }
+}

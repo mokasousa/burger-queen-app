@@ -7,7 +7,6 @@ const styleOrderList = {
     fontWeight: 'bold',
     textAlign: 'right',
     minWidth: '280px',
-    //maxWidth: '301px',
     maxWidth: '100%',
     borderRadius: '2px',
     flexGrow: 10

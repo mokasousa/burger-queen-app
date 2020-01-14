@@ -160,7 +160,7 @@ const MenuOrder = (props) => {
                             : ''
                     } {
                         (menuType === 'Almoço/Jantar' && item.option.length !== 0 && checkbox === item)
-                        ? <Segment horizontal='true' className='checkbox-item' style={styleCheckboxItem}>
+                        ? <Segment horizontal='true' className='checkbox-item' key={index} style={styleCheckboxItem}>
                             <CheckboxElement
                             item={item}
                             checkedItems={checkedItems}

@@ -6,8 +6,7 @@ const formStyle = {
     fontSize: 'medium',
     padding: '1em 0.5em',
     flexGrow: 1,
-    margin: '0 0.5em',
-    //maxWidth: '100%'
+    margin: '0 0.5em'
 }
 
 const buttonStyle = {

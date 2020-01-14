@@ -4,6 +4,14 @@ import PrepOrders from '../../Components/PrepOrders';
 import Header from '../../Components/Header';
 import Footer from '../../Components/Footer';
 
+
+const styleContent = {
+    display:'flex', 
+    flexDirection:'column', 
+    justifyContent:'space-between',
+    height:'100vh'
+}
+
 const Prep = () => {
 
     const [ordersToPrep, setOrdersToPrep] = useState([]);
@@ -24,10 +32,12 @@ const Prep = () => {
     return(
         <>
         <Header />
+        <div style={styleContent}>
         {(ordersToPrep.length > 0)
             ? <PrepOrders ordersToPrep={ordersToPrep} />
             : 'Não há pedidos para preparação...'}
         <Footer />
+        </div>
         </>
     )
 }

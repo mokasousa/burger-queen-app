@@ -23,14 +23,10 @@ const PrepOrders = (props) => {
 
     useEffect(() => {
         const time = setInterval(() => setTimeNow(new Date()), 1000);
-        return () => clearInterval(time); //return when react unmount
+        return () => clearInterval(time); //return when unmount
     }, [])
 
     const updateStatus = (e, item) => {
-
-        console.log('btn name' + e.target.name);
-        console.log('btn value' + e.target.value);
-        console.log('btn target' + e.target.title);
 
         firebase
             .firestore()

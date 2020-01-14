@@ -83,7 +83,6 @@ const AllOrders = (props) => {
                 }
                 buttons={(item.status==='Pronto')
                     ? <Button
-                        // className='btn-finalize'
                         style={buttonStyle} 
                         onClick={() => updateOrder(item)} 
                         content= 'Finalizar'

@@ -17,7 +17,6 @@ const Routes = () => {
         firebase
          .auth()
          .onAuthStateChanged((user) => {
-             
             if(user){
                 
                 setLogged(true);
@@ -27,9 +26,11 @@ const Routes = () => {
                  .doc(user.uid)
                  .get()
                  .then((doc) => {
-                    setCurrUser(doc.data().workIn)
-                })
-             } else {
+                    const role = doc.data() && doc.data().workIn;
+                    setCurrUser(role)
+                }).catch((error) => console.log(error));
+
+            } else {
                 
                 setLogged(false);
              }

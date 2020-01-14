@@ -7,6 +7,13 @@ import Header from '../../Components/Header';
 import Footer from '../../Components/Footer';
 import './styles.css';
 
+const styleContent = {
+    display:'flex', 
+    flexDirection:'column', 
+    justifyContent:'space-between',
+    height:'100vh'
+}
+
 const styleClientOrder = {
     backgroundColor: 'rgba(192, 171, 149, 0.3)',
     display: 'flex',
@@ -45,6 +52,7 @@ const Menu = () => {
     return(
         <>  
             <Header />
+            <div style={styleContent}>
             <div className='menu-page' style={styleMenuPage}>
             <div style={{flexGrow:15}}>
             <MenuOrder menu={menu} order={order} setOrder={setOrder} setTotal={setTotal}/>
@@ -55,6 +63,7 @@ const Menu = () => {
             </div>
             </div>
             <Footer />
+            </div>
         </>
     )
 }
