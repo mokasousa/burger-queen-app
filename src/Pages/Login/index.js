@@ -1,8 +1,7 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import firebase from '../../config/firebase.js';
 import { Image, Button, Header, Form, Input, Message } from 'semantic-ui-react';
-import {Link, withRouter, Redirect} from 'react-router-dom';
-// import AuthFirebase from '../Components/Auth';
+import { Link, withRouter } from 'react-router-dom';
 
 const buttonStyle = {
   backgroundColor: '#4EC475',
@@ -17,39 +16,45 @@ const inputStyle = {
   maxWidth: '350px'
 }
 
-const Login = (/*{ history }*/) => {
+const Login = (props) => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   function onSubmit (e){
+    
     e.preventDefault()
 
     return (
-      
       firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
-      .then(() => window.location.pathname = '/Pedidos')
-      /*.then((cred) => {
-        if (cred.user) {
-          history.push('/Menu');
-        }
-      })*/.catch((error) => {
-        console.log(error.code);
+      .then((cred) => {
+        firebase
+          .firestore()
+          .collection('Users')
+          .doc(cred.user.uid)
+          .get()
+          .then((resp) => {
+              return resp.data().workIn === 'Cozinha'
+            ? props.history.replace('/Preparos')
+            : resp.data().workIn === 'Salão'
+            ? props.history.replace('/Menu')
+            : null
+          })
+      })
+      .catch((error) => {
+        console.log(error);
       })
     )
   }
-
-  // const { currUser } = useContext(AuthFirebase);
-  // currUser ? (<Redirect to='/Menu' />) : false
 
   return (
     <>
     <Image 
       src={require('../../Images/Burger-Queen-Logo.png')} 
       alt='Burger Queen Logo' 
-      size='large'
+      size='medium'
       />
     <Form onSubmit={onSubmit}>
       <Header>Entrar</Header>
@@ -71,13 +76,11 @@ const Login = (/*{ history }*/) => {
         onChange={ e => setPassword(e.currentTarget.value)}
         ></Input>
       </Form.Field>
-      {/* <Link to='/Pedidos'> */}
       <Button 
       style={buttonStyle}
       type='submit'
       content='Entrar'
       />
-      {/* </Link> */}
     </Form>
     <Message attached='bottom'>Para cadastrar-se <Link to='/Cadastrar'>clique aqui</Link>.
     </Message>

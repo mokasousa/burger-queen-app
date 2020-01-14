@@ -1,31 +1,25 @@
 import React from 'react';
 import firebase from '../../config/firebase.js';
 import { Segment, Icon } from 'semantic-ui-react';
-//import {withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
-const Footer = () => {
-
-
+const Footer = (props) => {
 
     function logOut() {
         firebase
           .auth()
           .signOut()
-          .then(() => window.location.pathname = '/')
-          // .then(() => {
-          //   //props.history.push('/login');
-          //   //window.location.path = '/Login'
-          // });
+          .then(() => props.history.replace('/Entrar'))
       }
 
     return (
         <> 
-        <Segment>
-            {/* <label>Olá, {firebase.auth().currentUser}!</label> */}
+        <Segment inline>
+            <label>Colaborador: {firebase.auth().currentUser.displayName}</label>
             <Icon 
             style={{margin:'0.2em'}}
             name='log out' 
-            size='huge'
+            size='big'
             onClick={() => logOut()}
             />
         </Segment>
@@ -33,5 +27,4 @@ const Footer = () => {
     )
 }
 
-//export default withRouter(Footer)
-export default Footer
+export default withRouter(Footer);

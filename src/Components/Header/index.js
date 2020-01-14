@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import firebase from '../../config/firebase.js';
 import { Link } from 'react-router-dom';
 import { Image, Menu } from 'semantic-ui-react';
 import './styles.css';
@@ -24,12 +25,25 @@ const Header = () => {
     const pathname = window.location.pathname;
 
     const path = pathname === '/'
-    ? 'Menu'
+    ? 'Pedidos'
     : pathname.substr(1);
 
     const [activeItem, setActiveItem] = useState(path);
+    const [workIn, setWorkIn] = useState('');
 
     const handleItemClick = (e, {name}) => setActiveItem(name);
+
+    useEffect(() => {
+
+        const currUser = firebase.auth().currentUser.uid;
+
+        firebase
+            .firestore()
+            .collection('Users')
+            .doc(currUser)
+            .get()
+            .then((resp) => setWorkIn(resp.data().workIn))
+    }, [])
 
     return (
         <> 
@@ -42,21 +56,25 @@ const Header = () => {
             />
 
             <Menu.Menu position='right' style={styleNav}>
-                <Menu.Item
+                {(workIn === 'Salão')
+                ? (<Menu.Item
                 name='Menu'
                 active={activeItem === 'Menu'}
                 onClick={handleItemClick}
                 as={Link}
                 to='/Menu'
-                />
+                />)
+                :''}
 
-                <Menu.Item
+                {(workIn === 'Cozinha')
+                ? (<Menu.Item
                 name='Preparos'
                 active={activeItem === 'Preparos'}
                 onClick={handleItemClick}
                 as={Link}
                 to='/Preparos'
-                />
+                />)
+                : ''}
 
                 <Menu.Item
                 name='Pedidos'
@@ -72,3 +90,5 @@ const Header = () => {
 }
 
 export default Header;
+
+

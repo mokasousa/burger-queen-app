@@ -1,7 +1,21 @@
 import React, {useState}from 'react';
 import firebase from '../../config/firebase.js';
-import { Image, Button, Header, Radio, Form, Input } from 'semantic-ui-react';
-import { withRouter } from 'react-router-dom';
+import { Message, Image, Button, Header, Radio, Form, Input } from 'semantic-ui-react';
+import { Link, withRouter } from 'react-router-dom';
+
+const stylePage = {
+  textAlign: 'center'
+}
+
+const styleMessage = {
+  margin:'2em 0', 
+  borderTop: '2px solid #545353', 
+  borderBottom: '2px solid #545353', 
+  borderRight:'none',
+  borderLeft:'none',
+  borderRadius:0,
+
+}
 
 const buttonStyle = {
   backgroundColor: '#4EC475',
@@ -13,10 +27,10 @@ const buttonStyle = {
 const inputStyle = {
   border: '2px solid #545353',
   borderRadius: '2px',
-  maxWidth: '350px'
+  maxWidth: '300px'
 }
 
-const SignUp = (/*{ history }*/) => {
+const SignUp = (props) => {
 
   const [radio, setRadio] = useState('');
   const [name, setName] = useState('');
@@ -32,11 +46,10 @@ const SignUp = (/*{ history }*/) => {
 
     if(name.length > 0 && email.length > 0 && password.length > 0 && radio.length > 0) {
 
-      // return (
         firebase
           .auth()
           .createUserWithEmailAndPassword(email, password)
-          .then((resp) => {
+          .then(resp => {
             if (resp.user) {
               resp.user.updateProfile({
                 displayName: name,
@@ -50,26 +63,32 @@ const SignUp = (/*{ history }*/) => {
                       name: name,
                       workIn: radio
                     })
-                    .then(() => window.location.pathname = '/Pedidos')
+                    .then(() => {
+                      return radio === 'Cozinha'
+                      ? props.history.replace('/Preparos')
+                      : radio === 'Salão'
+                      ? props.history.replace('/Menu')
+                      : null
+                    })
                 });
             }
           }).catch((error) => {
             console.log(error);
           })
-      // )
     }
   }
 
   return (
     <>
+    <div style={stylePage}>
     <Image 
       src={require('../../Images/Burger-Queen-Logo.png')} 
       alt='Burger Queen Logo' 
-      size='large'
+      size='medium'
       />
     <Form onSubmit={onSubmit}>
-      <Header>Cadastro</Header>
-      <Form.Field inline>
+      <Header style={{margin:'1em', fontSize: 'x-large', color:'#4EC475'}}>Cadastro</Header>
+      <Form.Field inline style={{fontWeight: 'bold'}}>
         <Radio
         label='Cozinha'
         name='trabalho'
@@ -118,6 +137,9 @@ const SignUp = (/*{ history }*/) => {
       content='Cadastrar'
       />
     </Form>
+    <Message attached='bottom' style={styleMessage}>Já tem cadastro? <Link to='/Entrar'>Clique aqui para entrar</Link>.
+    </Message>
+    </div>
     </>
   )
 }

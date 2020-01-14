@@ -4,11 +4,9 @@ import { Switch, Route} from 'react-router-dom';
 import Menu from '../Pages/Menu';
 import Prep from '../Pages/Prep';
 import OrderHistory from '../Pages/OrderHistory';
-import Auth from '../Pages/Auth'
-// import Login from '../Pages/Login';
-// import SignUp from '../Pages/SignUp';
-// import AuthFirebase from '../Components/Auth';
-//import PrivateRoute from '../Components/PrivateRoute'
+//import Auth from '../Pages/Auth'
+import Login from '../Pages/Login';
+import SignUp from '../Pages/SignUp';
 
 const Routes = () => {
 
@@ -19,8 +17,9 @@ const Routes = () => {
         firebase
          .auth()
          .onAuthStateChanged((user) => {
-             if(user){
-                console.log(user.uid + 'logged')
+             
+            if(user){
+                
                 setLogged(true);
                 firebase
                  .firestore()
@@ -28,45 +27,17 @@ const Routes = () => {
                  .doc(user.uid)
                  .get()
                  .then((doc) => {
-                    // console.log('trabalha no '+doc.data().workIn)
                     setCurrUser(doc.data().workIn)
                 })
              } else {
-                console.log('nobody is logged')
+                
                 setLogged(false);
              }
-             //console.log(user.uid)
             })
     }, [])
 
-    // console.log(currUser)
-
-    // const isWaiterOrCooker = () => {
-        
-    //     if(currUser === 'Salão') {
-    //         return (
-    //             <>
-    //             <Route path='/Menu' component={Menu} />
-    //             <Route path='/Pedidos' component={OrderHistory} />
-    //             </>
-    //         )
-    //     }else if (currUser === 'Cozinha') {
-    //         return (
-    //             <>
-    //             <Route path='/Preparos' component={Prep} />
-    //             <Route path='/Pedidos' component={OrderHistory} />
-    //             </>
-    //         )
-    //     }
-    // }
-
     return (
-        // <AuthFirebase>
             <Switch>
-
-                {/* <PrivateRoute path='/Menu' component={Menu} />
-                <PrivateRoute path='/Preparos' component={Prep} />
-                <PrivateRoute path='/Pedidos' component={OrderHistory} /> */}
                 
                 {(logged && currUser === 'Salão')
                 ? (<>
@@ -79,19 +50,14 @@ const Routes = () => {
                     <Route path='/Pedidos' component={OrderHistory} />
                     </>)
                 :(<>
-                    <Route exact path = '/' component={Auth} />
-                    <Route path='/Entrar' component={Auth} />
-                    <Route path='/Cadastrar' component={Auth} />
+                    <Route exact path = '/' component={Login} />
+                    <Route path='/Entrar' component={Login} />
+                    <Route path='/Cadastrar' component={SignUp} />
                     </>)
                 }
-                
 
-                {/* <Route exact path = '/' component={Login} />
-                <Route path='/Entrar' component={Login} />
-                <Route path='/Cadastrar' component={SignUp} />  */}
             </Switch>
-        // </AuthFirebase>
     )
 }
 
-export default Routes
+export default Routes;
