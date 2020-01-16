@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import firebase from '../../config/firebase.js';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Image, Menu } from 'semantic-ui-react';
+import { UserContext, OrdersContext } from '../UserContext';
 import './styles.css';
 
 const styleTabular = {
@@ -24,26 +24,15 @@ const Header = () => {
 
     const pathname = window.location.pathname;
 
-    const path = pathname === '/'
-    ? 'Pedidos'
-    : pathname.substr(1);
+    const path = pathname.substr(1);
 
     const [activeItem, setActiveItem] = useState(path);
-    const [workIn, setWorkIn] = useState('');
 
-    const handleItemClick = (e, {name}) => setActiveItem(name);
+    const handleItemClick = (e, {name}) => setActiveItem(name.replace(/ .*/, ''));
 
-    useEffect(() => {
-
-        const currUser = firebase.auth().currentUser.uid;
-
-        firebase
-            .firestore()
-            .collection('Users')
-            .doc(currUser)
-            .get()
-            .then((resp) => setWorkIn(resp.data().workIn))
-    }, [])
+    const currUser = useContext(UserContext)
+    const orders = useContext(OrdersContext)
+    const readyOrders = orders.filter(el => el.status === 'Pronto')
 
     return (
         <> 
@@ -56,7 +45,7 @@ const Header = () => {
             />
 
             <Menu.Menu position='right' style={styleNav}>
-                {(workIn === 'Salão')
+                {currUser.workIn === 'Salão'
                 ? (<Menu.Item
                 name='Menu'
                 active={activeItem === 'Menu'}
@@ -66,7 +55,7 @@ const Header = () => {
                 />)
                 :''}
 
-                {(workIn === 'Cozinha')
+                {currUser.workIn === 'Cozinha'
                 ? (<Menu.Item
                 name='Preparos'
                 active={activeItem === 'Preparos'}
@@ -77,7 +66,7 @@ const Header = () => {
                 : ''}
 
                 <Menu.Item
-                name='Pedidos'
+                name={`Pedidos (${readyOrders.length})`}
                 active={activeItem === 'Pedidos'}
                 onClick={handleItemClick}
                 as={Link}

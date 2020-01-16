@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import firebase from '../../config/firebase.js';
 import { Segment, Icon } from 'semantic-ui-react';
 import { withRouter } from 'react-router-dom';
+import { UserContext } from '../UserContext'
 
 const styleSegment = {
     marginTop:'1em',
@@ -14,6 +15,8 @@ const styleSegment = {
 
 const Footer = (props) => {
 
+    const currUser = useContext(UserContext)
+
     function logOut() {
         firebase
           .auth()
@@ -24,7 +27,7 @@ const Footer = (props) => {
     return (
         <> 
         <Segment inline='true' style={styleSegment}>
-            <label>Colaborador: {firebase.auth().currentUser.displayName}</label>
+            <label>Colaborador: {currUser.name}</label>
             <Icon 
             style={{margin:'0.2em'}}
             name='log out' 

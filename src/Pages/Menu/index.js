@@ -51,7 +51,7 @@ const Menu = () => {
  
     return(
         <>  
-            <Header />
+            {/* <Header /> */}
             <div style={styleContent}>
             <div className='menu-page' style={styleMenuPage}>
             <div style={{flexGrow:15}}>
@@ -62,7 +62,7 @@ const Menu = () => {
             <MenuForm order={order} setOrder={setOrder} total={total} setTotal={setTotal} />
             </div>
             </div>
-            <Footer />
+            {/* <Footer /> */}
             </div>
         </>
     )

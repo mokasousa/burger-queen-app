@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import firebase from '../../config/firebase.js';
 import { Button, Grid } from 'semantic-ui-react';
 import Card from '../../Components/OrdersCard';
+import { UserContext } from '../UserContext';
 
 const buttonStyle = {
     backgroundColor:'#ffffff',
@@ -11,6 +12,8 @@ const buttonStyle = {
 }
 
 const AllOrders = (props) => {
+
+    const currUser = useContext(UserContext)
 
     const updateOrder = (item) => {
 
@@ -81,7 +84,7 @@ const AllOrders = (props) => {
                     <p>Mesa: {item.table}</p>
                     </>
                 }
-                buttons={(item.status==='Pronto')
+                buttons={(item.status==='Pronto' && currUser.workIn === 'Salão')
                     ? <Button
                         style={buttonStyle} 
                         onClick={() => updateOrder(item)} 
