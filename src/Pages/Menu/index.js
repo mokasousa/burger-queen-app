@@ -43,15 +43,14 @@ const Menu = () => {
             .collection('Menu')
             .get()
             .then((response) => {
-                const itensMenu = [];
-                response.forEach(item => itensMenu.push(item.data()))
-                setMenu(itensMenu.sort((a,b) => a.name > b.name));
+                const itensMenu = response.docs.map(item => item.data()).sort((a,b) => a.name > b.name)
+                setMenu(itensMenu);
             })
     }, [])
  
     return(
         <>  
-            {/* <Header /> */}
+            <Header />
             <div style={styleContent}>
             <div className='menu-page' style={styleMenuPage}>
             <div style={{flexGrow:15}}>
@@ -62,8 +61,8 @@ const Menu = () => {
             <MenuForm order={order} setOrder={setOrder} total={total} setTotal={setTotal} />
             </div>
             </div>
-            {/* <Footer /> */}
             </div>
+            <Footer />
         </>
     )
 }

@@ -89,9 +89,7 @@ const MenuOrder = (props) => {
         } else {
 
             setCheckedItems({extra:[]})
-            show()
-
-            // return alert('Escolha o tipo de Hamburguer!')                
+            show()            
         }
     }
 
@@ -139,16 +137,7 @@ const MenuOrder = (props) => {
                 return (
                     <>
                     {
-                        (menuType === 'Café-da-Manhã' && item.breakfast === true)
-                            ? (<li key={index}>
-                                <Button
-                                style={styleMenuButtons}
-                                className='btn-menu-items' 
-                                onClick={() => addItem(item)} 
-                                content={item.name + ' R$' + item.price} 
-                                />
-                                </li>)
-                            : (menuType === 'Almoço/Jantar' && item.breakfast === false)
+                        (menuType === 'Café-da-Manhã' && item.breakfast === true) || (menuType === 'Almoço/Jantar' && item.breakfast === false)
                             ? (<li key={index}>
                                 <Button
                                 style={styleMenuButtons}

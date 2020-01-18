@@ -6,9 +6,7 @@ import Prep from '../Pages/Prep';
 import OrderHistory from '../Pages/OrderHistory';
 import Login from '../Pages/Login';
 import SignUp from '../Pages/SignUp';
-import Header from '../Components/Header'
-import Footer from '../Components/Footer'
-import { UserContext, OrdersContext } from '../Components/UserContext'
+import { UserContext, OrdersContext } from '../Components/UserContext';
 
 const Routes = () => {
 
@@ -47,8 +45,7 @@ const Routes = () => {
             .orderBy('ordenate', 'asc')
             .orderBy('timeOfOrder', 'asc')
             .onSnapshot((snapshot) => {
-                let itensOrders = [];
-                snapshot.docs.forEach(item => itensOrders.push({...item.data(), id:item.id}))
+                let itensOrders = snapshot.docs.map(item => {return {...item.data(), id:item.id}})
                 setOrdersHistory(itensOrders);
             })
     }, [])
@@ -60,22 +57,18 @@ const Routes = () => {
                 ? (<>
                     <UserContext.Provider value={currUser}>
                         <OrdersContext.Provider value={ordersHistory}>
-                            <Header />
                             <Route path='/Pedidos' component={OrderHistory} />
+                            <Route path='/Menu' component={Menu} />
                         </OrdersContext.Provider>
-                        <Route path='/Menu' component={Menu} />
-                        <Footer />
                     </UserContext.Provider>
                     </>)
                 : (logged && currUser.workIn === 'Cozinha')
                 ? (<>
                     <UserContext.Provider value={currUser}>
                         <OrdersContext.Provider value={ordersHistory}>
-                            <Header />
                             <Route path='/Pedidos' component={OrderHistory} />
                             <Route path='/Preparos' component={Prep} />
                         </OrdersContext.Provider>
-                        <Footer />
                     </UserContext.Provider>
                     </>)
                 :(<>

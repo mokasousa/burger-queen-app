@@ -102,6 +102,7 @@ const Login = (props) => {
       <Form.Field>
         <label>Senha:</label>
         <Input 
+        type='password'
         style={inputStyle}
         value={password}
         placeholder='********'

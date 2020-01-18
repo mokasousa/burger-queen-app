@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { UserContext } from '../UserContext'
 
 const styleSegment = {
-    marginTop:'1em',
+    marginTop:'auto',
     bottom: 0,
     width: '100%',
     textAlign: 'right',
