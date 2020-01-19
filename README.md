@@ -82,25 +82,19 @@ A partir dessas informações foram estipuladas as seguintes histórias de usuá
 
 ## 3. O produto
 
-Página de Cadastro
+Página de Login: ![Login tablet]()
 
-Página de Login
+Página de Menu (acesso como garçom apenas): ![Menu tablet]()
 
-Página de Menu (acesso como garçom apenas)
+Página de Preparos (acesso como cozinheiro apenas): ![Preparos tablet]()
 
-Página de Preparos (acesso como cozinheiro apenas)
-
-Página de Pedidos (acesso a todos os usuários)
-
+Página de Pedidos (acesso a todos os usuários): ![Pedidos tablet garçom]() ![Pedidos tablet cozinheiro]()
 
 ## 7. Tecnologias utilizadas
 
-    * HTML
-    * CSS
-    * Javascript 
-    * React.js (React Hooks)
-    * Semantic UI
-    * Firebase
+* [React Hooks](https://reactjs.org/docs/hooks-intro.html)
+* [Semantic UI React](https://react.semantic-ui.com/)
+* [Firebase](https://firebase.google.com)
 
 ## 6. Considerações finais
 

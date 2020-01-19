@@ -11,7 +11,7 @@ const styleContent = {
     display:'flex', 
     flexDirection:'column', 
     justifyContent:'space-between',
-    height:'100vh'
+    minHeight:'100vh'
 }
 
 const styleClientOrder = {
@@ -21,7 +21,7 @@ const styleClientOrder = {
     justifyContent: 'center',
     flexGrow:1,
     borderRadius: '2px',
-    maxWidth: '621px',
+    maxWidth: '700px',
     bottom: 0, 
     margin:'0 auto',
     height: 'min-content'

@@ -80,9 +80,9 @@ const MenuOrder = (props) => {
             setCheckedItems({extra:[]});
             setCheckbox({});
 
-            const itemInOrderList = document.getElementById('list-' + props.order.findIndex(el => el.option === checkedItems.option && el.extra.sort().join(',') === checkedItems.extra.sort().join(',')))
+            const itemInOrderList = document.getElementById('list-' + props.order.findIndex(el => el.name === item.name && el.option === checkedItems.option && el.extra.sort().join(',') === checkedItems.extra.sort().join(',')))
 
-            return (props.order.some(el => el.option === checkedItems.option && el.extra.sort().join(',') === checkedItems.extra.sort().join(','))) 
+            return (props.order.some(el => el.name === item.name && el.option === checkedItems.option && el.extra.sort().join(',') === checkedItems.extra.sort().join(','))) 
                 ? showItemInList(itemInOrderList)
                 : props.setOrder([...props.order, newBurguerOrder])
 

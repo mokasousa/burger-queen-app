@@ -9,7 +9,7 @@ const styleContent = {
     display:'flex', 
     flexDirection:'column', 
     justifyContent:'space-between',
-    height:'100vh'
+    minHeight:'100vh'
 }
 
 const Prep = () => {

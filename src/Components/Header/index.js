@@ -66,7 +66,7 @@ const Header = () => {
                 : ''}
 
                 <Menu.Item
-                name={`Pedidos (${readyOrders.length})`}
+                name={`Pedidos (${readyOrders.length > 0 ? readyOrders.length : ''})`}
                 active={activeItem === 'Pedidos'}
                 onClick={handleItemClick}
                 as={Link}

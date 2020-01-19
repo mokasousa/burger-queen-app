@@ -1,9 +1,18 @@
 @media only screen and (max-width: 415px) {
     div.order-info{
-        width:100%
+        width:100%;
+        margin-bottom: 1em;
+        text-align: center;
+        min-width: 345px
     }
     div.order-info-updateStatus{
         width:100%;
-        margin: 2em 0
+        min-width: 345px;
+        margin: 2em 0;
+        text-align: center;
+        border-top: 0.5px solid rgba(192, 171, 149);
+    }
+    div.row.order{
+        justify-content: center;
     }
 }

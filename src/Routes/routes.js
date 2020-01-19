@@ -19,7 +19,6 @@ const Routes = () => {
          .auth()
          .onAuthStateChanged((user) => {
             if(user){
-                console.log(user.displayName)
                 setLogged(true);
                 firebase
                  .firestore()
