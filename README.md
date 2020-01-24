@@ -82,13 +82,20 @@ A partir dessas informações foram estipuladas as seguintes histórias de usuá
 
 ## 3. O produto
 
-Página de Login: ![Login tablet]()
+Página de Login: 
+![Login tablet](https://github.com/mokasousa/RestaurantApp-Burger-Queen/blob/master/src/Images/login-tablet.png)
 
-Página de Menu (acesso como garçom apenas): ![Menu tablet]()
+Página de Menu (acesso como garçom apenas): 
+![Menu Café da manhã tablet](https://github.com/mokasousa/RestaurantApp-Burger-Queen/blob/master/src/Images/menu-breakfast-tablet.png) 
+![Menu Almoço/Jantar tablet](https://github.com/mokasousa/RestaurantApp-Burger-Queen/blob/master/src/Images/menu-lunch-tablet.png)
 
-Página de Preparos (acesso como cozinheiro apenas): ![Preparos tablet]()
+Página de Preparos (acesso como cozinheiro apenas): 
+![Preparos tablet](https://github.com/mokasousa/RestaurantApp-Burger-Queen/blob/master/src/Images/prep-desktop.png)
+![Preparos mobile](https://github.com/mokasousa/RestaurantApp-Burger-Queen/blob/master/src/Images/prep-mobile.png)
 
-Página de Pedidos (acesso a todos os usuários): ![Pedidos tablet garçom]() ![Pedidos tablet cozinheiro]()
+Página de Pedidos (acesso a todos os usuários): 
+![Pedidos tablet garçom](https://github.com/mokasousa/RestaurantApp-Burger-Queen/blob/master/src/Images/order-history-waiter-tablet.png) 
+![Pedidos tablet cozinheiro](https://github.com/mokasousa/RestaurantApp-Burger-Queen/blob/master/src/Images/order-history-cook-tablet.png)
 
 ## 7. Tecnologias utilizadas
 
@@ -101,6 +108,3 @@ Página de Pedidos (acesso a todos os usuários): ![Pedidos tablet garçom]() ![
 Esse projeto foi desenvolvido como parte do currículo do [Bootcamp da Laboratória Brasil](https://www.laboratoria.la/br) e todos os requisitos para o projeto podem ser verificados [aqui](https://github.com/Laboratoria/SAP003-burger-queen).
 
 O projeto foi criado e desenvolvido por Mônica Sousa.
-
-
-
