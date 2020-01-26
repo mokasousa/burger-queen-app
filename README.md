@@ -55,53 +55,40 @@ A partir dessas informações foram estipuladas as seguintes histórias de usuá
 
 ### Histórias de Usuário
 
-    1. Garçons devem poder registrar o pedido do cliente
+1. Garçons devem poder registrar o pedido do cliente
 
-        * Anotar o nome e a mesa do cliente.
-        * Adicionar os itens do menu aos pedidos.
-        * Excluir e alterar itens dos pedidos
-        * Ver resumo e o total da compra.
-        * Enviar o pedido para a cozinha.
+    * Anotar o nome e a mesa do cliente.
+    * Adicionar os itens do menu aos pedidos.
+    * Excluir e alterar itens dos pedidos
+    * Ver resumo e o total da compra.
+    * Enviar o pedido para a cozinha.
 
-    2. O cozinheiros devem poder ver os pedidos
+2. Os cozinheiros devem poder ver os pedidos
 
-        * Ver os pedidos à medida em que são feitos em ordem.
-        * Marcar os pedidos que foram preparados e estão prontos para serem servidos.
-        * Ver o tempo que levou para preparar o pedido desde que chegou, até ser marcado como concluído.
+    * Ver os pedidos à medida em que são feitos em ordem.
+    * Marcar os pedidos que foram preparados e estão prontos para serem servidos.
+    * Ver o tempo que levou para preparar o pedido desde que chegou, até ser marcado como concluído.
 
-    3. Garçons devem poder ver os pedidos prontos para servir
+3. Garçons devem poder ver os pedidos prontos para servir
 
-        * Ver a lista de pedidos prontos para servir.
-        * Marcar os pedidos que foram entregues.
+    * Ver a lista de pedidos prontos para servir.
+    * Marcar os pedidos que foram entregues.
 
-    4. Garçons e cozinheiros devem poder fazer o login
+4. Garçons e cozinheiros devem poder fazer o login
 
-        * Criar login e senha.
-        * Criar tipo de usuário (cozinha / salão).
-        * Entrar na tela correta para cada usuário.
+    * Criar login e senha.
+    * Criar tipo de usuário (cozinha / salão).
+    * Entrar na tela correta para cada usuário.
 
 ## 3. O produto
 
-Página de Login: 
-![Login tablet](https://github.com/mokasousa/RestaurantApp-Burger-Queen/blob/master/src/Images/login-tablet.png)
-
-Página de Menu (acesso como garçom apenas): 
-![Menu Café da manhã tablet](https://github.com/mokasousa/RestaurantApp-Burger-Queen/blob/master/src/Images/menu-breakfast-tablet.png) 
-![Menu Almoço/Jantar tablet](https://github.com/mokasousa/RestaurantApp-Burger-Queen/blob/master/src/Images/menu-lunch-tablet.png)
-
-Página de Preparos (acesso como cozinheiro apenas): 
-![Preparos tablet](https://github.com/mokasousa/RestaurantApp-Burger-Queen/blob/master/src/Images/prep-desktop.png)
-![Preparos mobile](https://github.com/mokasousa/RestaurantApp-Burger-Queen/blob/master/src/Images/prep-mobile.png)
-
-Página de Pedidos (acesso a todos os usuários): 
-![Pedidos tablet garçom](https://github.com/mokasousa/RestaurantApp-Burger-Queen/blob/master/src/Images/order-history-waiter-tablet.png) 
-![Pedidos tablet cozinheiro](https://github.com/mokasousa/RestaurantApp-Burger-Queen/blob/master/src/Images/order-history-cook-tablet.png)
+![Burger Queen Telas](https://github.com/mokasousa/RestaurantApp-Burger-Queen/blob/master/src/Images/Burguer%20Queen%20App.png)
 
 ## 7. Tecnologias utilizadas
 
 * [React Hooks](https://reactjs.org/docs/hooks-intro.html)
 * [Semantic UI React](https://react.semantic-ui.com/)
-* [Firebase](https://firebase.google.com)
+* [Firebase Realtime Database](https://firebase.google.com)
 
 ## 6. Considerações finais
 
