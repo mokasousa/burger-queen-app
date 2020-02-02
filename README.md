@@ -1,6 +1,6 @@
 # Burger Queen App
 
-
+![Burger Queen Mobile Gif](https://raw.githubusercontent.com/mokasousa/RestaurantApp-Burger-Queen/master/src/Images/Burger%20Queen%20Mobile%20Gif.gif)
 
 ## 1. Resumo do projeto
 
