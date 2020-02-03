@@ -88,7 +88,7 @@ A partir dessas informações foram estipuladas as seguintes histórias de usuá
 
 * [React Hooks](https://reactjs.org/docs/hooks-intro.html)
 * [Semantic UI React](https://react.semantic-ui.com/)
-* [Firebase Realtime Database](https://firebase.google.com)
+* [Firebase Realtime Database](https://firebase.google.com)(Ver [Burger Queen API](https://github.com/mokasousa/SAP003-burger-queen-api))
 
 ## 6. Considerações finais
 
