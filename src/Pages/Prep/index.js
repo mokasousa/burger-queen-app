@@ -9,7 +9,7 @@ const styleContent = {
     display:'flex', 
     flexDirection:'column', 
     justifyContent:'space-between',
-    minHeight:'100vh'
+    paddingBottom: '4rem'
 }
 
 const Prep = () => {
@@ -23,9 +23,9 @@ const Prep = () => {
         <div style={styleContent}>
         {(ordersToPrep.length > 0)
             ? <PrepOrders ordersToPrep={ordersToPrep} />
-            : 'Não há pedidos para preparação...'}
-        <Footer />
+            : <h3>Não há pedidos para preparação...</h3>}
         </div>
+        <Footer />
         </>
     )
 }

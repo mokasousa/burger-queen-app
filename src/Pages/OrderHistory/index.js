@@ -8,7 +8,7 @@ const styleContent = {
     display:'flex', 
     flexDirection:'column', 
     justifyContent:'space-between',
-    minHeight:'100vh'
+    paddingBottom: '4rem'
 }
 
 const OrderHistory = () => {
@@ -23,8 +23,8 @@ const OrderHistory = () => {
         {(ordersHistory.length > 0)
             ? <ListOrders ordersHistory={ordersHistory} />
             : ''}
-        <Footer />
         </div>
+        <Footer />
         </>
     )
 }

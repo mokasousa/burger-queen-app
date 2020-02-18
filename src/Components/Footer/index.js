@@ -7,10 +7,13 @@ import { UserContext } from '../UserContext'
 const styleSegment = {
     marginTop:'auto',
     bottom: 0,
+    left: 0,
     width: '100%',
     textAlign: 'right',
     fontWeight: 'bold',
-    borderTop: '2px solid'
+    borderTop: '2px solid',
+    height: '4rem',
+    position: 'absolute'
 }
 
 const Footer = (props) => {
