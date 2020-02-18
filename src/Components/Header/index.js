@@ -6,7 +6,7 @@ import './styles.css';
 
 const styleTabular = {
     margin: '1.5em auto',
-    borderBottom: '2px solid #545353'
+    borderBottom: '2px solid #545353',
 }
 
 const styleImage = {

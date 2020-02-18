@@ -12,3 +12,8 @@ body {
     width: 100%;
     vertical-align: middle;
 }
+
+#root{
+    min-height: 100vh;
+    position: relative
+}

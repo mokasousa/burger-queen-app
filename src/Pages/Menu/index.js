@@ -11,7 +11,7 @@ const styleContent = {
     display:'flex', 
     flexDirection:'column', 
     justifyContent:'space-between',
-    minHeight:'100vh'
+    paddingBottom: '4rem'
 }
 
 const styleClientOrder = {
